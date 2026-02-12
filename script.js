@@ -1,8 +1,11 @@
 /* ============================================
-   RONIT JITESH — PORTFOLIO SCRIPTS v2.0
+   RONIT JITESH — PORTFOLIO SCRIPTS v3.0
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  // Check reduced-motion preference
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ====================================
      0. PAGE LOADER
@@ -102,6 +105,23 @@ document.addEventListener('DOMContentLoaded', () => {
   revealEls.forEach(el => revealObserver.observe(el));
 
   /* ====================================
+     4B. STAGGER REVEAL (Cinematic)
+     ==================================== */
+  const staggerEls = document.querySelectorAll('.stagger-reveal');
+  const staggerObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          staggerObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+  staggerEls.forEach(el => staggerObserver.observe(el));
+
+  /* ====================================
      5. TYPING ANIMATION
      ==================================== */
   const typingEl = document.getElementById('typing-text');
@@ -148,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
      6. PARTICLE / DOT GRID BACKGROUND
      ==================================== */
   const canvas = document.getElementById('hero-canvas');
-  if (canvas) {
+  if (canvas && !prefersReducedMotion) {
     const ctx = canvas.getContext('2d');
     let particles = [];
     let mouseX = 0;
@@ -242,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
      7. MATRIX RAIN
      ==================================== */
   const matrixCanvas = document.getElementById('matrix-canvas');
-  if (matrixCanvas) {
+  if (matrixCanvas && !prefersReducedMotion) {
     const mctx = matrixCanvas.getContext('2d');
     matrixCanvas.width = window.innerWidth;
     matrixCanvas.height = window.innerHeight;
@@ -288,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
      8. CURSOR GLOW
      ==================================== */
   const cursorGlow = document.getElementById('cursor-glow');
-  if (cursorGlow && window.innerWidth > 768) {
+  if (cursorGlow && window.innerWidth > 768 && !prefersReducedMotion) {
     let cx = 0, cy = 0, tx = 0, ty = 0;
 
     document.addEventListener('mousemove', e => {
@@ -436,23 +456,25 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ====================================
      13. TILT EFFECT ON HOLO CARDS
      ==================================== */
-  document.querySelectorAll('.holo-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -3;
-      const rotateY = ((x - centerX) / centerX) * 3;
+  if (!prefersReducedMotion) {
+    document.querySelectorAll('.holo-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -3;
+        const rotateY = ((x - centerX) / centerX) * 3;
 
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-    });
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      });
 
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+      });
     });
-  });
+  }
 
   /* ====================================
      14. RESUME DOWNLOAD TRACKING
@@ -464,6 +486,207 @@ document.addEventListener('DOMContentLoaded', () => {
       if (window.gtag) {
         window.gtag('event', 'download_cv');
       }
+    });
+  }
+
+  /* ====================================
+     15. PARALLAX GLOW ORBS
+     ==================================== */
+  if (!prefersReducedMotion) {
+    const glows = document.querySelectorAll('.hero-glow');
+    let scrollTicking = false;
+
+    window.addEventListener('scroll', () => {
+      if (!scrollTicking) {
+        requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          glows.forEach((glow, i) => {
+            const speed = (i + 1) * 0.08;
+            glow.style.transform = `translateY(${scrollY * speed}px)`;
+          });
+          scrollTicking = false;
+        });
+        scrollTicking = true;
+      }
+    });
+  }
+
+  /* ====================================
+     16. MAGNETIC BUTTONS
+     ==================================== */
+  if (!prefersReducedMotion && window.innerWidth > 768) {
+    document.querySelectorAll('.magnetic').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0, 0)';
+      });
+    });
+  }
+
+  /* ====================================
+     17. TEXT SCRAMBLE EFFECT
+     ==================================== */
+  const scrambleChars = '!@#$%^&*()_+-=[]{}|;:<>?/~`';
+
+  function scrambleText(el) {
+    const original = el.textContent;
+    let iterations = 0;
+    const totalIterations = original.length * 2;
+
+    const interval = setInterval(() => {
+      el.textContent = original
+        .split('')
+        .map((char, i) => {
+          if (char === ' ' || char === '\n') return char;
+          if (i < iterations / 2) return original[i];
+          return scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+        })
+        .join('');
+
+      iterations++;
+      if (iterations >= totalIterations) {
+        clearInterval(interval);
+        el.textContent = original;
+      }
+    }, 30);
+  }
+
+  if (!prefersReducedMotion) {
+    const scrambleEls = document.querySelectorAll('.scramble-text');
+    const scrambleObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            scrambleText(entry.target);
+            scrambleObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    scrambleEls.forEach(el => scrambleObserver.observe(el));
+  }
+
+  /* ====================================
+     18. FLOATING SCROLL PARTICLES
+     ==================================== */
+  const floatCanvas = document.getElementById('float-particles-canvas');
+  if (floatCanvas && !prefersReducedMotion) {
+    const fctx = floatCanvas.getContext('2d');
+    let fParticles = [];
+
+    function initFloatParticles() {
+      floatCanvas.width = window.innerWidth;
+      floatCanvas.height = window.innerHeight;
+      fParticles = [];
+      const count = Math.min(40, Math.floor(window.innerWidth / 40));
+      for (let i = 0; i < count; i++) {
+        fParticles.push({
+          x: Math.random() * floatCanvas.width,
+          y: Math.random() * floatCanvas.height,
+          r: Math.random() * 2 + 0.5,
+          speedX: (Math.random() - 0.5) * 0.3,
+          speedY: -(Math.random() * 0.5 + 0.1),
+          opacity: Math.random() * 0.4 + 0.1
+        });
+      }
+    }
+
+    function drawFloatParticles() {
+      fctx.clearRect(0, 0, floatCanvas.width, floatCanvas.height);
+      const isDark = root.getAttribute('data-theme') !== 'light';
+
+      fParticles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        // Wrap around
+        if (p.y < -10) p.y = floatCanvas.height + 10;
+        if (p.x < -10) p.x = floatCanvas.width + 10;
+        if (p.x > floatCanvas.width + 10) p.x = -10;
+
+        fctx.beginPath();
+        fctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        fctx.fillStyle = isDark
+          ? `rgba(168, 85, 247, ${p.opacity})`
+          : `rgba(100, 60, 200, ${p.opacity * 0.5})`;
+        fctx.fill();
+      });
+
+      requestAnimationFrame(drawFloatParticles);
+    }
+
+    window.addEventListener('resize', initFloatParticles);
+    initFloatParticles();
+    drawFloatParticles();
+  }
+
+  /* ====================================
+     19. SKILL PROFICIENCY BARS
+     ==================================== */
+  const skillBars = document.querySelectorAll('.skill-bar-fill');
+  const skillObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const bar = entry.target;
+          const width = bar.getAttribute('data-width');
+          setTimeout(() => {
+            bar.style.width = width + '%';
+            bar.classList.add('animated');
+          }, 200);
+          skillObserver.unobserve(bar);
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+  skillBars.forEach(bar => skillObserver.observe(bar));
+
+  /* ====================================
+     20. EASTER EGG (Konami Code)
+     ==================================== */
+  const konamiCode = [
+    'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+    'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+    'KeyB', 'KeyA'
+  ];
+  let konamiIndex = 0;
+  const easterEgg = document.getElementById('easter-egg');
+  const easterEggClose = document.getElementById('easter-egg-close');
+
+  document.addEventListener('keydown', e => {
+    if (e.code === konamiCode[konamiIndex]) {
+      konamiIndex++;
+      if (konamiIndex === konamiCode.length) {
+        konamiIndex = 0;
+        if (easterEgg) easterEgg.classList.add('active');
+      }
+    } else {
+      konamiIndex = 0;
+    }
+  });
+
+  if (easterEggClose && easterEgg) {
+    easterEggClose.addEventListener('click', () => {
+      easterEgg.classList.remove('active');
+    });
+  }
+
+  /* ====================================
+     21. SERVICE WORKER REGISTRATION
+     ==================================== */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('SW registered:', reg.scope))
+        .catch(err => console.log('SW registration failed:', err));
     });
   }
 

@@ -20,6 +20,42 @@
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
 
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0a0a0f" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ronit Jitesh",
+    "url": "https://ronit-jitesh.github.io/",
+    "jobTitle": "Business Analyst & AI Builder",
+    "email": "ronitjitesh@gmail.com",
+    "sameAs": [
+      "https://www.linkedin.com/in/ronit-jitesh-440a1319b/",
+      "https://github.com/ronit-jitesh"
+    ],
+    "alumniOf": [
+      {
+        "@type": "EducationalOrganization",
+        "name": "University of Edinburgh"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "Malnad College of Engineering"
+      }
+    ],
+    "knowsAbout": [
+      "Business Analytics", "Prompt Engineering", "RAG Pipelines",
+      "Python", "Machine Learning", "Power BI", "Natural Language Processing"
+    ]
+  }
+  </script>
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -40,6 +76,19 @@
 
   <!-- ========== CURSOR GLOW ========== -->
   <div class="cursor-glow" id="cursor-glow"></div>
+
+  <!-- ========== FLOATING SCROLL PARTICLES ========== -->
+  <canvas class="float-particles-canvas" id="float-particles-canvas"></canvas>
+
+  <!-- ========== EASTER EGG OVERLAY ========== -->
+  <div class="easter-egg-overlay" id="easter-egg">
+    <div class="easter-egg-text">
+      <span class="neon-purple">You found the</span><br />
+      <span class="neon-cyan">secret level! 🎮</span>
+    </div>
+    <p class="easter-egg-sub">↑ ↑ ↓ ↓ ← → ← → B A</p>
+    <button class="easter-egg-close" id="easter-egg-close">Close</button>
+  </div>
 
   <!-- ========== NAVIGATION ========== -->
   <nav class="navbar" id="navbar">
@@ -80,7 +129,7 @@
       <h1 class="hero-name glitch gradient-text" data-text="Ronit Jitesh">Ronit Jitesh</h1>
       <p class="hero-title"><span id="typing-text"></span><span class="cursor"></span></p>
       <div class="hero-cta-group">
-        <a href="#projects" class="btn btn-primary">
+        <a href="#projects" class="btn btn-primary magnetic">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <rect x="2" y="3" width="20" height="14" rx="2" />
             <line x1="8" y1="21" x2="16" y2="21" />
@@ -88,15 +137,15 @@
           </svg>
           View Projects
         </a>
-        <a href="#contact" class="btn btn-outline">
+        <a href="#contact" class="btn btn-outline magnetic">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
             <polyline points="22,6 12,13 2,6" />
           </svg>
           Get In Touch
         </a>
-        <a href="https://drive.google.com/file/d/YOUR_CV_LINK/view" target="_blank" class="btn btn-outline btn-sm"
-          id="download-cv">
+        <a href="https://drive.google.com/file/d/YOUR_CV_LINK/view" target="_blank"
+          class="btn btn-outline btn-sm magnetic" id="download-cv">
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
             <polyline points="7 10 12 15 17 10" />
@@ -113,6 +162,30 @@
     </div>
   </section>
 
+  <!-- ========== LEARNING MARQUEE ========== -->
+  <div class="marquee-section">
+    <p class="marquee-label">Currently Exploring</p>
+    <div class="marquee-track">
+      <div class="marquee-item"><span class="dot"></span>LangChain & Agent Frameworks</div>
+      <div class="marquee-item"><span class="dot"></span>Retrieval-Augmented Generation</div>
+      <div class="marquee-item"><span class="dot"></span>Multi-Modal AI</div>
+      <div class="marquee-item"><span class="dot"></span>Fine-Tuning LLMs</div>
+      <div class="marquee-item"><span class="dot"></span>AI Product Design</div>
+      <div class="marquee-item"><span class="dot"></span>Advanced Prompt Engineering</div>
+      <div class="marquee-item"><span class="dot"></span>Vector Databases</div>
+      <div class="marquee-item"><span class="dot"></span>Knowledge Graphs</div>
+      <!-- Duplicate for seamless loop -->
+      <div class="marquee-item"><span class="dot"></span>LangChain & Agent Frameworks</div>
+      <div class="marquee-item"><span class="dot"></span>Retrieval-Augmented Generation</div>
+      <div class="marquee-item"><span class="dot"></span>Multi-Modal AI</div>
+      <div class="marquee-item"><span class="dot"></span>Fine-Tuning LLMs</div>
+      <div class="marquee-item"><span class="dot"></span>AI Product Design</div>
+      <div class="marquee-item"><span class="dot"></span>Advanced Prompt Engineering</div>
+      <div class="marquee-item"><span class="dot"></span>Vector Databases</div>
+      <div class="marquee-item"><span class="dot"></span>Knowledge Graphs</div>
+    </div>
+  </div>
+
   <!-- ====== DIVIDER ====== -->
   <div class="section-divider">
     <div class="line"></div>
@@ -125,7 +198,7 @@
       <div class="about-grid">
         <div class="about-text reveal">
           <span class="section-label">About Me</span>
-          <h2 class="section-title">Turning Data Into<br />Decisions & Products</h2>
+          <h2 class="section-title scramble-text">Turning Data Into<br />Decisions & Products</h2>
           <p>I'm a Business Analytics professional with 2 years of industry experience, currently pursuing my MSc in
             Business Analytics at the University of Edinburgh. I'm passionate about building products that solve real
             problems — from AI-powered chatbots to clinical documentation assistants.</p>
@@ -133,22 +206,22 @@
             it's crafting Power BI dashboards, engineering prompts for LLMs, or building full-stack web apps, I focus on
             delivering measurable impact.</p>
           <div class="about-stats">
-            <div class="stat-card">
+            <div class="stat-card gradient-border-wrap">
               <div class="stat-number" data-count="2" data-suffix="+">0</div>
               <div class="stat-label">Years Exp</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card gradient-border-wrap">
               <div class="stat-number" data-count="5" data-suffix="+">0</div>
               <div class="stat-label">Projects</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card gradient-border-wrap">
               <div class="stat-number" data-count="1" data-suffix="M+">0</div>
               <div class="stat-label">SKUs Enriched</div>
             </div>
           </div>
         </div>
         <div class="about-highlights reveal reveal-delay-2">
-          <div class="highlight-card holo-card">
+          <div class="highlight-card holo-card gradient-border-wrap">
             <div class="grid-overlay"></div>
             <div class="highlight-icon">🤖</div>
             <div>
@@ -157,7 +230,7 @@
                 transcription.</p>
             </div>
           </div>
-          <div class="highlight-card holo-card">
+          <div class="highlight-card holo-card gradient-border-wrap">
             <div class="grid-overlay"></div>
             <div class="highlight-icon">📊</div>
             <div>
@@ -166,7 +239,7 @@
                 outcomes.</p>
             </div>
           </div>
-          <div class="highlight-card holo-card">
+          <div class="highlight-card holo-card gradient-border-wrap">
             <div class="grid-overlay"></div>
             <div class="highlight-icon">🎨</div>
             <div>
@@ -190,23 +263,46 @@
   <section class="skills" id="skills">
     <div class="container">
       <span class="section-label reveal">Tech Stack</span>
-      <h2 class="section-title reveal">Skills & Technologies</h2>
+      <h2 class="section-title reveal scramble-text">Skills & Technologies</h2>
       <p class="section-subtitle reveal">The tools I use to turn ideas into working products.</p>
       <div class="skills-grid">
-        <div class="skill-group holo-card scan-line reveal">
+        <div class="skill-group holo-card scan-line gradient-border-wrap reveal">
           <div class="grid-overlay"></div>
           <h3 class="skill-group-title">Languages</h3>
-          <div class="skill-tags">
+          <div class="skill-tags stagger-reveal">
             <span class="skill-tag">Python</span>
             <span class="skill-tag">SQL</span>
             <span class="skill-tag">TypeScript</span>
             <span class="skill-tag">VBA</span>
           </div>
+          <div class="skill-bar-group">
+            <div class="skill-bar-item">
+              <div class="skill-bar-header"><span class="skill-bar-name">Python</span><span
+                  class="skill-bar-pct">90%</span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-width="90"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header"><span class="skill-bar-name">SQL</span><span
+                  class="skill-bar-pct">85%</span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-width="85"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header"><span class="skill-bar-name">TypeScript</span><span
+                  class="skill-bar-pct">75%</span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-width="75"></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="skill-group holo-card scan-line reveal reveal-delay-1">
+        <div class="skill-group holo-card scan-line gradient-border-wrap reveal reveal-delay-1">
           <div class="grid-overlay"></div>
           <h3 class="skill-group-title">Frameworks & Platforms</h3>
-          <div class="skill-tags">
+          <div class="skill-tags stagger-reveal">
             <span class="skill-tag">Next.js</span>
             <span class="skill-tag">Streamlit</span>
             <span class="skill-tag">Supabase</span>
@@ -214,11 +310,27 @@
             <span class="skill-tag">Power BI</span>
             <span class="skill-tag">HuggingFace</span>
           </div>
+          <div class="skill-bar-group">
+            <div class="skill-bar-item">
+              <div class="skill-bar-header"><span class="skill-bar-name">Next.js</span><span
+                  class="skill-bar-pct">80%</span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-width="80"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header"><span class="skill-bar-name">Power BI</span><span
+                  class="skill-bar-pct">85%</span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-width="85"></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="skill-group holo-card scan-line reveal reveal-delay-2">
+        <div class="skill-group holo-card scan-line gradient-border-wrap reveal reveal-delay-2">
           <div class="grid-overlay"></div>
           <h3 class="skill-group-title">AI / Machine Learning</h3>
-          <div class="skill-tags">
+          <div class="skill-tags stagger-reveal">
             <span class="skill-tag">Prompt Engineering</span>
             <span class="skill-tag">RAG Pipelines</span>
             <span class="skill-tag">GPT-4o</span>
@@ -227,17 +339,49 @@
             <span class="skill-tag">BERT</span>
             <span class="skill-tag">Deepgram</span>
           </div>
+          <div class="skill-bar-group">
+            <div class="skill-bar-item">
+              <div class="skill-bar-header"><span class="skill-bar-name">Prompt Engineering</span><span
+                  class="skill-bar-pct">95%</span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-width="95"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header"><span class="skill-bar-name">RAG Pipelines</span><span
+                  class="skill-bar-pct">85%</span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-width="85"></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="skill-group holo-card scan-line reveal reveal-delay-3">
+        <div class="skill-group holo-card scan-line gradient-border-wrap reveal reveal-delay-3">
           <div class="grid-overlay"></div>
           <h3 class="skill-group-title">Tools & Methods</h3>
-          <div class="skill-tags">
+          <div class="skill-tags stagger-reveal">
             <span class="skill-tag">Docker</span>
             <span class="skill-tag">Git</span>
             <span class="skill-tag">Advanced Excel</span>
             <span class="skill-tag">Predictive Modelling</span>
             <span class="skill-tag">Time Series</span>
             <span class="skill-tag">Data Storytelling</span>
+          </div>
+          <div class="skill-bar-group">
+            <div class="skill-bar-item">
+              <div class="skill-bar-header"><span class="skill-bar-name">Docker</span><span
+                  class="skill-bar-pct">70%</span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-width="70"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-header"><span class="skill-bar-name">Git</span><span
+                  class="skill-bar-pct">80%</span></div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-width="80"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -254,7 +398,7 @@
   <section class="projects" id="projects">
     <div class="container">
       <span class="section-label reveal">Portfolio</span>
-      <h2 class="section-title reveal">Featured Projects</h2>
+      <h2 class="section-title reveal scramble-text">Featured Projects</h2>
       <p class="section-subtitle reveal">A selection of things I've built — from AI systems to full-stack apps.</p>
 
       <!-- Filter Tabs -->
@@ -268,7 +412,7 @@
       <div class="projects-grid">
 
         <!-- Project 1 — Clinical Co-Pilot -->
-        <div class="project-card holo-card reveal" data-category="fullstack">
+        <div class="project-card holo-card gradient-border-wrap reveal" data-category="fullstack">
           <div class="grid-overlay"></div>
           <div class="project-card-header">
             <div class="project-icon purple">🏥</div>
@@ -298,7 +442,7 @@
         </div>
 
         <!-- Project 2 — Industrial Repair Companion -->
-        <div class="project-card holo-card reveal reveal-delay-1" data-category="ai">
+        <div class="project-card holo-card gradient-border-wrap reveal reveal-delay-1" data-category="ai">
           <div class="grid-overlay"></div>
           <div class="project-card-header">
             <div class="project-icon cyan">🔧</div>
@@ -328,7 +472,7 @@
         </div>
 
         <!-- Project 3 — Adaptive NLI -->
-        <div class="project-card holo-card reveal reveal-delay-2" data-category="ai">
+        <div class="project-card holo-card gradient-border-wrap reveal reveal-delay-2" data-category="ai">
           <div class="grid-overlay"></div>
           <div class="project-card-header">
             <div class="project-icon pink">🧠</div>
@@ -357,7 +501,7 @@
         </div>
 
         <!-- Project 4 — Bank Loan Prediction (Academic) -->
-        <div class="project-card holo-card reveal" data-category="analytics">
+        <div class="project-card holo-card gradient-border-wrap reveal" data-category="analytics">
           <div class="grid-overlay"></div>
           <div class="project-card-header">
             <div class="project-icon green">🏦</div>
@@ -378,7 +522,7 @@
         </div>
 
         <!-- Project 5 — Customer Churn Analysis -->
-        <div class="project-card holo-card reveal reveal-delay-1" data-category="analytics">
+        <div class="project-card holo-card gradient-border-wrap reveal reveal-delay-1" data-category="analytics">
           <div class="grid-overlay"></div>
           <div class="project-card-header">
             <div class="project-icon cyan">📉</div>
@@ -399,7 +543,7 @@
         </div>
 
         <!-- Project 6 — Airport Scheduling Optimisation -->
-        <div class="project-card holo-card reveal reveal-delay-2" data-category="analytics">
+        <div class="project-card holo-card gradient-border-wrap reveal reveal-delay-2" data-category="analytics">
           <div class="grid-overlay"></div>
           <div class="project-card-header">
             <div class="project-icon purple">✈️</div>
@@ -433,12 +577,12 @@
   <section class="experience" id="experience">
     <div class="container">
       <span class="section-label reveal">Career</span>
-      <h2 class="section-title reveal">Experience</h2>
+      <h2 class="section-title reveal scramble-text">Experience</h2>
       <div class="timeline">
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-date">Sep 2024 — Aug 2025</div>
-          <div class="timeline-card holo-card">
+          <div class="timeline-card holo-card gradient-border-wrap">
             <div class="grid-overlay"></div>
             <h3>Product Master Data Analyst I — BI & Analytics</h3>
             <p class="company">LKQ India Private Limited</p>
@@ -457,7 +601,7 @@
         <div class="timeline-item reveal reveal-delay-1">
           <div class="timeline-dot"></div>
           <div class="timeline-date">Sep 2023 — Sep 2024</div>
-          <div class="timeline-card holo-card">
+          <div class="timeline-card holo-card gradient-border-wrap">
             <div class="grid-overlay"></div>
             <h3>Data Analyst Apprentice — Data Quality & Analytics</h3>
             <p class="company">LKQ India Private Limited</p>
@@ -485,9 +629,9 @@
   <section class="education" id="education">
     <div class="container">
       <span class="section-label reveal">Education</span>
-      <h2 class="section-title reveal">Academic Background</h2>
+      <h2 class="section-title reveal scramble-text">Academic Background</h2>
       <div class="education-grid">
-        <div class="education-card holo-card reveal">
+        <div class="education-card holo-card gradient-border-wrap reveal">
           <div class="grid-overlay"></div>
           <h3 class="education-degree">MSc Business Analytics</h3>
           <p class="education-school">University of Edinburgh</p>
@@ -495,7 +639,7 @@
           <p>Coursework in machine learning, optimisation, statistical modelling, and NLP. Dissertation focus on
             LLM-based classification systems.</p>
         </div>
-        <div class="education-card holo-card reveal reveal-delay-1">
+        <div class="education-card holo-card gradient-border-wrap reveal reveal-delay-1">
           <div class="grid-overlay"></div>
           <h3 class="education-degree">BE Mechanical Engineering</h3>
           <p class="education-school">Malnad College of Engineering</p>
@@ -517,9 +661,9 @@
   <section class="awards" id="awards">
     <div class="container">
       <span class="section-label reveal">Recognition</span>
-      <h2 class="section-title reveal">Awards & Leadership</h2>
+      <h2 class="section-title reveal scramble-text">Awards & Leadership</h2>
       <div class="awards-list">
-        <div class="award-item holo-card reveal">
+        <div class="award-item holo-card gradient-border-wrap reveal">
           <div class="grid-overlay"></div>
           <div class="award-icon">🏆</div>
           <div>
@@ -527,7 +671,7 @@
             <p>University of Edinburgh Startup Fast Track Programme · 2025</p>
           </div>
         </div>
-        <div class="award-item holo-card reveal reveal-delay-1">
+        <div class="award-item holo-card gradient-border-wrap reveal reveal-delay-1">
           <div class="grid-overlay"></div>
           <div class="award-icon">🎤</div>
           <div>
@@ -535,7 +679,7 @@
             <p>Conversational AI Summit · 2026</p>
           </div>
         </div>
-        <div class="award-item holo-card reveal reveal-delay-2">
+        <div class="award-item holo-card gradient-border-wrap reveal reveal-delay-2">
           <div class="grid-overlay"></div>
           <div class="award-icon">🎓</div>
           <div>
@@ -543,7 +687,7 @@
             <p>Edinburgh Business School · 2025 – 2026</p>
           </div>
         </div>
-        <div class="award-item holo-card reveal reveal-delay-3">
+        <div class="award-item holo-card gradient-border-wrap reveal reveal-delay-3">
           <div class="grid-overlay"></div>
           <div class="award-icon">🌍</div>
           <div>
@@ -565,7 +709,7 @@
   <section class="contact" id="contact">
     <div class="container">
       <span class="section-label reveal">Contact</span>
-      <h2 class="section-title reveal">Let's Connect</h2>
+      <h2 class="section-title reveal scramble-text">Let's Connect</h2>
       <p class="section-subtitle reveal">Have a project in mind, or just want to chat about AI, data, or product design?
         Reach out!</p>
 
@@ -607,7 +751,7 @@
           <label for="message">Message</label>
           <textarea name="message" id="message" required placeholder="Hey Ronit, I'd love to chat about..."></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary magnetic">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <line x1="22" y1="2" x2="11" y2="13" />
             <polygon points="22 2 15 22 11 13 2 9 22 2" />
@@ -628,6 +772,7 @@
 
   <!-- Scripts -->
   <script src="script.js"></script>
+
 </body>
 
 </html>

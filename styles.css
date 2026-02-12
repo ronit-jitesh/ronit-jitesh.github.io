@@ -1738,6 +1738,406 @@ ul {
 }
 
 /* ============================================
+   PARALLAX GLOW ORBS
+   ============================================ */
+.hero-glow {
+  will-change: transform;
+  transition: transform 0.3s ease-out, opacity 0.4s ease;
+}
+
+/* ============================================
+   MAGNETIC BUTTONS
+   ============================================ */
+.btn.magnetic {
+  transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow var(--transition-fast);
+  will-change: transform;
+}
+
+/* ============================================
+   TEXT SCRAMBLE EFFECT
+   ============================================ */
+.scramble-text {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.scramble-text .char {
+  display: inline-block;
+  transition: opacity 0.05s;
+}
+
+.scramble-text .char.scrambling {
+  color: var(--accent-cyan);
+  opacity: 0.7;
+}
+
+/* ============================================
+   FLOATING SCROLL PARTICLES
+   ============================================ */
+.float-particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+[data-theme="light"] .float-particles-canvas {
+  opacity: 0.15;
+}
+
+/* ============================================
+   ANIMATED GRADIENT BORDER
+   ============================================ */
+.gradient-border-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-border-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(from var(--gradient-angle, 0deg),
+      var(--accent-purple),
+      var(--accent-cyan),
+      var(--accent-pink),
+      var(--accent-green),
+      var(--accent-purple));
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--transition-medium);
+  pointer-events: none;
+}
+
+.gradient-border-wrap:hover::after {
+  opacity: 1;
+  animation: rotateGradient 3s linear infinite;
+}
+
+@keyframes rotateGradient {
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* ============================================
+   LEARNING MARQUEE TICKER
+   ============================================ */
+.marquee-section {
+  padding: 0;
+  overflow: hidden;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+}
+
+.marquee-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--accent-purple);
+  text-align: center;
+  padding: 12px 0 0;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 30s linear infinite;
+  padding: 16px 0 20px;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  flex-shrink: 0;
+  padding: 0 32px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.marquee-item .dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ============================================
+   SKILL PROFICIENCY BARS
+   ============================================ */
+.skill-bar-group {
+  margin-top: 16px;
+}
+
+.skill-bar-item {
+  margin-bottom: 14px;
+}
+
+.skill-bar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.skill-bar-name {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.skill-bar-pct {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--accent-cyan);
+}
+
+.skill-bar-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+[data-theme="light"] .skill-bar-track {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.skill-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--gradient-main);
+  border-radius: 3px;
+  transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.skill-bar-fill.animated {
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.3);
+}
+
+.skill-bar-fill::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: white;
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+/* ============================================
+   EASTER EGG OVERLAY
+   ============================================ */
+.easter-egg-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.easter-egg-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.easter-egg-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 700;
+  text-align: center;
+  max-width: 600px;
+  padding: 0 24px;
+  line-height: 1.4;
+}
+
+.easter-egg-text .neon-purple {
+  color: var(--accent-purple);
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.5),
+    0 0 40px rgba(168, 85, 247, 0.3);
+}
+
+.easter-egg-text .neon-cyan {
+  color: var(--accent-cyan);
+  text-shadow: 0 0 20px rgba(34, 211, 238, 0.5),
+    0 0 40px rgba(34, 211, 238, 0.3);
+}
+
+.easter-egg-sub {
+  margin-top: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.easter-egg-close {
+  margin-top: 40px;
+  padding: 10px 28px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: transparent;
+  border: 1px solid var(--accent-purple);
+  border-radius: 50px;
+  color: var(--accent-purple);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.easter-egg-close:hover {
+  background: rgba(168, 85, 247, 0.15);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+/* ============================================
+   STAGGER REVEAL (Cinematic)
+   ============================================ */
+.stagger-reveal>* {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.stagger-reveal.visible>* {
+  animation: staggerIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.stagger-reveal.visible>*:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.stagger-reveal.visible>*:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.stagger-reveal.visible>*:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.stagger-reveal.visible>*:nth-child(4) {
+  animation-delay: 0.24s;
+}
+
+.stagger-reveal.visible>*:nth-child(5) {
+  animation-delay: 0.32s;
+}
+
+.stagger-reveal.visible>*:nth-child(6) {
+  animation-delay: 0.4s;
+}
+
+.stagger-reveal.visible>*:nth-child(7) {
+  animation-delay: 0.48s;
+}
+
+.stagger-reveal.visible>*:nth-child(8) {
+  animation-delay: 0.56s;
+}
+
+@keyframes staggerIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   PREFERS-REDUCED-MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .cursor-glow,
+  .matrix-canvas,
+  .float-particles-canvas,
+  .scan-line::after,
+  .page-loader {
+    display: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+
+  .hero-greeting,
+  .hero-name,
+  .hero-title,
+  .hero-cta-group,
+  .hero-scroll {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 @media (max-width: 1024px) {
