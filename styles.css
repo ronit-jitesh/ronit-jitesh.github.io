@@ -1005,10 +1005,11 @@ ul {
 .about {
   padding: var(--section-padding) 0;
   position: relative;
+  overflow-x: hidden;
 }
 
 .about-text {
-  max-width: 720px;
+  max-width: min(720px, 100%);
 }
 
 .about-text p {
@@ -2243,6 +2244,7 @@ ul {
   .about-stats {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+    max-width: 100%;
   }
 
   .stat-card {
@@ -2370,8 +2372,8 @@ ul {
   }
 
   .about-stats {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
   }
 
   .stat-card {
