@@ -1,5 +1,6 @@
 /* ============================================
-   RONIT JITESH — PORTFOLIO SCRIPTS v3.0
+   RONIT JITESH — PORTFOLIO SCRIPTS v4.0
+   Cyberpunk Neural Interface Edition
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,40 +9,35 @@ document.addEventListener('DOMContentLoaded', () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ====================================
-     0. PAGE LOADER
+     0. TERMINAL BOOT LOADER
      ==================================== */
   const loader = document.getElementById('page-loader');
+  const loaderPercent = document.getElementById('loader-percent');
   if (loader) {
+    let percent = 0;
+    const percentInterval = setInterval(() => {
+      percent += Math.floor(Math.random() * 8) + 2;
+      if (percent >= 100) {
+        percent = 100;
+        clearInterval(percentInterval);
+      }
+      if (loaderPercent) loaderPercent.textContent = percent + '%';
+    }, 80);
+
     window.addEventListener('load', () => {
       setTimeout(() => {
-        loader.classList.add('hidden');
-        document.body.classList.remove('loading');
-      }, 2000);
+        if (loaderPercent) loaderPercent.textContent = '100%';
+        setTimeout(() => {
+          loader.classList.add('hidden');
+          document.body.classList.remove('loading');
+        }, 400);
+      }, 2200);
     });
-    // Fallback if load event already fired
+    // Fallback
     setTimeout(() => {
       loader.classList.add('hidden');
       document.body.classList.remove('loading');
-    }, 2800);
-  }
-
-  /* ====================================
-     1. THEME TOGGLE
-     ==================================== */
-  const themeBtn = document.getElementById('theme-toggle');
-  const root = document.documentElement;
-
-  // Load saved theme
-  const savedTheme = localStorage.getItem('rj-theme') || 'dark';
-  root.setAttribute('data-theme', savedTheme);
-
-  if (themeBtn) {
-    themeBtn.addEventListener('click', () => {
-      const current = root.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      localStorage.setItem('rj-theme', next);
-    });
+    }, 3500);
   }
 
   /* ====================================
@@ -512,6 +508,53 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ====================================
+     15b. UNIVERSAL GRAVITY / PARALLAX
+     ==================================== */
+  if (!prefersReducedMotion) {
+    const root = document.documentElement;
+    let gravX = 0, gravY = 0;
+    let targetX = 0, targetY = 0;
+
+    const heroContent = document.querySelector('.hero-content');
+    const heroGlows = document.querySelectorAll('.hero-glow');
+
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile && window.DeviceOrientationEvent) {
+      window.addEventListener('deviceorientation', (e) => {
+        targetX = Math.min(Math.max(e.gamma || 0, -45), 45) / 45;
+        targetY = Math.min(Math.max(e.beta || 0, -45), 45) / 45;
+      });
+    } else {
+      document.addEventListener('mousemove', (e) => {
+        targetX = (e.clientX / window.innerWidth) * 2 - 1;
+        targetY = (e.clientY / window.innerHeight) * 2 - 1;
+      });
+    }
+
+    function animateGravity() {
+      // Lerp for smooth motion
+      gravX += (targetX - gravX) * 0.06;
+      gravY += (targetY - gravY) * 0.06;
+
+      // Move hero content slightly with input
+      if (heroContent) {
+        heroContent.style.transform = `translate(${gravX * 10}px, ${gravY * 8}px)`;
+      }
+
+      // Move glows opposite for depth parallax
+      heroGlows.forEach((glow, i) => {
+        const depth = (i + 1) * 12;
+        glow.style.transform = `translate(${gravX * -depth}px, ${gravY * -depth}px)`;
+      });
+
+      requestAnimationFrame(animateGravity);
+    }
+
+    animateGravity();
+  }
+
+  /* ====================================
      16. MAGNETIC BUTTONS
      ==================================== */
   if (!prefersReducedMotion && window.innerWidth > 768) {
@@ -688,6 +731,21 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(reg => console.log('SW registered:', reg.scope))
         .catch(err => console.log('SW registration failed:', err));
     });
+  }
+
+  /* ====================================
+     22. UPTIME COUNTER
+     ==================================== */
+  const uptimeEl = document.getElementById('uptime-counter');
+  if (uptimeEl) {
+    const startTime = Date.now();
+    setInterval(() => {
+      const elapsed = Math.floor((Date.now() - startTime) / 1000);
+      const h = String(Math.floor(elapsed / 3600)).padStart(2, '0');
+      const m = String(Math.floor((elapsed % 3600) / 60)).padStart(2, '0');
+      const s = String(elapsed % 60).padStart(2, '0');
+      uptimeEl.textContent = `${h}:${m}:${s}`;
+    }, 1000);
   }
 
 });
