@@ -24,20 +24,42 @@ document.addEventListener('DOMContentLoaded', () => {
       if (loaderPercent) loaderPercent.textContent = percent + '%';
     }, 80);
 
-    window.addEventListener('load', () => {
+    function dismissLoader() {
+      if (loaderPercent) loaderPercent.textContent = '100%';
+      // Let the bar fill reach 100% visually
+      const barFill = loader.querySelector('.loader-bar-fill');
+      if (barFill) barFill.style.width = '100%';
       setTimeout(() => {
-        if (loaderPercent) loaderPercent.textContent = '100%';
-        setTimeout(() => {
-          loader.classList.add('hidden');
-          document.body.classList.remove('loading');
-        }, 400);
-      }, 2200);
-    });
-    // Fallback
+        loader.classList.add('hidden');
+        document.body.classList.remove('loading');
+      }, 500);
+    }
+
+    // Minimum boot animation time: 2.5s so users always see it
+    const minBootTime = 2500;
+    const bootStart = Date.now();
+
+    function tryDismiss() {
+      const elapsed = Date.now() - bootStart;
+      if (elapsed < minBootTime) {
+        setTimeout(dismissLoader, minBootTime - elapsed);
+      } else {
+        dismissLoader();
+      }
+    }
+
+    // Handle both cases: page already loaded or still loading
+    if (document.readyState === 'complete') {
+      tryDismiss();
+    } else {
+      window.addEventListener('load', tryDismiss);
+    }
+
+    // Hard fallback: never show loader for more than 5s
     setTimeout(() => {
       loader.classList.add('hidden');
       document.body.classList.remove('loading');
-    }, 3500);
+    }, 5000);
   }
 
   /* ====================================
