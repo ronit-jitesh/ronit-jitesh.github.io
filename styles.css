@@ -676,9 +676,10 @@ ul {
   width: 100%;
   height: 4px;
   background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
-  opacity: 0.4;
+  opacity: 0.6;
   animation: scanDown 4s ease-in-out infinite;
   pointer-events: none;
+  z-index: 5;
 }
 
 @keyframes scanDown {
@@ -991,17 +992,18 @@ ul {
 }
 
 .hero-canvas {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
+  pointer-events: none;
 }
 
 /* Matrix rain canvas */
 .matrix-canvas {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -1185,7 +1187,7 @@ ul {
 
 /* Glow orbs */
 .hero-glow {
-  position: absolute;
+  position: fixed;
   border-radius: 50%;
   filter: blur(100px);
   opacity: 0.15;
@@ -2178,7 +2180,7 @@ ul {
 
 .skill-bar-fill {
   height: 100%;
-  width: 0%;
+  width: 1%;
   background: var(--gradient-main);
   border-radius: 3px;
   transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
