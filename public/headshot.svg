@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#2a3a63" />
+      <stop offset="60%" stop-color="#1b2a4e" />
+      <stop offset="100%" stop-color="#0f1a38" />
+    </radialGradient>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d8b38a" />
+      <stop offset="100%" stop-color="#b88a66" />
+    </linearGradient>
+    <linearGradient id="shirt" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#e9e6df" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="500" fill="url(#bg)" />
+  <g opacity="0.18">
+    <circle cx="80" cy="120" r="2" fill="#ffffff" />
+    <circle cx="340" cy="80" r="1.5" fill="#ffffff" />
+    <circle cx="60" cy="300" r="1.2" fill="#ffffff" />
+    <circle cx="360" cy="260" r="1.8" fill="#ffffff" />
+  </g>
+  <ellipse cx="200" cy="190" rx="70" ry="82" fill="url(#skin)" />
+  <path d="M130 180 Q200 110 270 180 Q275 140 200 120 Q125 140 130 180 Z" fill="#1b1b1b" />
+  <path d="M155 245 Q200 275 245 245 Q240 260 200 264 Q160 260 155 245 Z" fill="#2a1d14" />
+  <path d="M90 500 Q90 340 200 320 Q310 340 310 500 Z" fill="url(#shirt)" />
+  <path d="M180 320 L200 360 L220 320 L260 330 L260 430 L140 430 L140 330 Z" fill="url(#shirt)" />
+  <line x1="200" y1="330" x2="200" y2="430" stroke="#d8d3ca" stroke-width="1.2" />
+  <circle cx="200" cy="355" r="2" fill="#c9c3b8" />
+  <circle cx="200" cy="385" r="2" fill="#c9c3b8" />
+  <circle cx="200" cy="415" r="2" fill="#c9c3b8" />
+  <text x="50%" y="480" text-anchor="middle" font-family="monospace" font-size="10" fill="#ffffff" opacity="0.5">
+    headshot placeholder · drop public/headshot.png to replace
+  </text>
+</svg>
