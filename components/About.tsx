@@ -18,7 +18,7 @@ export function About() {
                   alt="Portrait of Ronit Jitesh"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover object-[center_20%]"
+                  className="object-cover object-center"
                   priority
                 />
               </div>
