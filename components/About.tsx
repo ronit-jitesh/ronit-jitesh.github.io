@@ -22,9 +22,10 @@ export function About() {
                   priority
                 />
               </div>
-              <div className="mt-5 flex items-center gap-3">
+              <div className="mt-5 flex flex-wrap items-center gap-2">
                 <span className="pill">Edinburgh, UK</span>
-                <span className="pill">Eligible to work in UK</span>
+                <span className="pill">UK work rights to Jan 2029</span>
+                <span className="pill">No sponsorship needed</span>
               </div>
             </div>
           </Reveal>
@@ -68,6 +69,11 @@ export function About() {
                 I&apos;m based in Edinburgh and looking for UK roles where I
                 can combine analytical rigour with hands-on building — across
                 AI, product, business analytics, and operations.
+              </p>
+              <p className="text-[15px] text-[color:var(--ink-soft)]">
+                Right to work: Student visa through Jan 2027, then UK Graduate
+                Route (Post-Study Work) for two years to Jan 2029. No
+                sponsorship required during that window.
               </p>
             </div>
           </Reveal>

@@ -127,25 +127,57 @@ export function Work() {
                       </p>
                     </div>
 
-                    <div className="mt-6 flex flex-wrap gap-3">
-                      {c.proof.map((p) => (
-                        <span
-                          key={p}
-                          className="text-xs font-mono uppercase tracking-[0.12em] text-[color:var(--ink-soft)] flex items-center gap-1.5"
-                        >
-                          <svg width="10" height="10" viewBox="0 0 10 10">
-                            <circle
-                              cx="5"
-                              cy="5"
-                              r="3.5"
-                              stroke="currentColor"
-                              fill="none"
-                              strokeWidth="1"
-                            />
-                          </svg>
-                          {p}
-                        </span>
-                      ))}
+                    <div className="mt-6 flex flex-wrap gap-x-5 gap-y-3">
+                      {c.proof.map((p) => {
+                        const inner = (
+                          <>
+                            <svg width="10" height="10" viewBox="0 0 10 10">
+                              <circle
+                                cx="5"
+                                cy="5"
+                                r="3.5"
+                                stroke="currentColor"
+                                fill="none"
+                                strokeWidth="1"
+                              />
+                            </svg>
+                            {p.label}
+                            {p.href && (
+                              <svg
+                                width="10"
+                                height="10"
+                                viewBox="0 0 10 10"
+                                aria-hidden
+                              >
+                                <path
+                                  d="M3 3h4v4M7 3L3 7"
+                                  stroke="currentColor"
+                                  strokeWidth="1"
+                                  fill="none"
+                                  strokeLinecap="round"
+                                />
+                              </svg>
+                            )}
+                          </>
+                        );
+                        const cls =
+                          "text-xs font-mono uppercase tracking-[0.12em] text-[color:var(--ink-soft)] flex items-center gap-1.5";
+                        return p.href ? (
+                          <a
+                            key={p.label}
+                            href={p.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            className={`${cls} hover:text-[color:var(--accent)] transition-colors`}
+                          >
+                            {inner}
+                          </a>
+                        ) : (
+                          <span key={p.label} className={cls}>
+                            {inner}
+                          </span>
+                        );
+                      })}
                     </div>
                   </div>
                 </article>

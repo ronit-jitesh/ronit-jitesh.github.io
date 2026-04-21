@@ -1,9 +1,43 @@
 "use client";
 
+import { useState, type FormEvent } from "react";
 import { profile } from "@/lib/content";
 import { Reveal } from "./Reveal";
 
+type Status = "idle" | "submitting" | "success" | "error";
+
 export function Contact() {
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMsg, setErrorMsg] = useState<string>("");
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    setStatus("submitting");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch(profile.formspree, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        form.reset();
+      } else {
+        const data = await res.json().catch(() => ({}));
+        const firstError = Array.isArray(data?.errors) && data.errors[0]?.message;
+        setErrorMsg(firstError || "Something went wrong. Please email me directly.");
+        setStatus("error");
+      }
+    } catch {
+      setErrorMsg("Network error. Please email me directly.");
+      setStatus("error");
+    }
+  }
+
   return (
     <section id="contact" className="py-28 md:py-40">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
@@ -44,49 +78,89 @@ export function Contact() {
           </Reveal>
 
           <Reveal as="div" className="md:col-span-7" delay={100}>
-            <form
-              className="surface p-7 md:p-9 space-y-5"
-              onSubmit={(e) => e.preventDefault()}
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <Input label="Your name" name="name" />
-                <Input label="Email" name="email" type="email" />
-              </div>
-              <div>
-                <label className="kicker mb-2 block">Hiring for</label>
-                <select
-                  name="role"
-                  className="w-full px-4 py-3 rounded-lg bg-[color:var(--bg)] border border-[color:var(--border)] text-sm focus:border-[color:var(--ink)] outline-none"
-                  defaultValue=""
-                >
-                  <option value="" disabled>
-                    Select a role…
-                  </option>
-                  <option>AI / Prompt Engineer</option>
-                  <option>Product Manager</option>
-                  <option>Business Analyst</option>
-                  <option>Operations Manager</option>
-                  <option>Other</option>
-                </select>
-              </div>
-              <div>
-                <label className="kicker mb-2 block">Message</label>
-                <textarea
-                  rows={4}
-                  name="message"
-                  className="w-full px-4 py-3 rounded-lg bg-[color:var(--bg)] border border-[color:var(--border)] text-sm focus:border-[color:var(--ink)] outline-none resize-none"
-                  placeholder="A quick note about the role, team, or question."
-                />
-              </div>
-              <div className="flex items-center justify-between gap-4">
-                <p className="text-xs text-[color:var(--ink-soft)]">
-                  Form endpoint — to be wired to Formspree on launch.
+            {status === "success" ? (
+              <div
+                className="surface p-8 md:p-10 space-y-4"
+                role="status"
+                aria-live="polite"
+              >
+                <div className="kicker text-[color:var(--accent)]">Sent</div>
+                <h3 className="font-display text-3xl md:text-4xl tracking-tight leading-[1.1]">
+                  Thanks — I&apos;ll reply within 24 hours.
+                </h3>
+                <p className="text-[color:var(--ink-muted)] text-[15px] max-w-md">
+                  In the meantime, feel free to check out my work on GitHub or
+                  connect on LinkedIn.
                 </p>
-                <button type="submit" className="btn btn-primary">
-                  Send message
+                <button
+                  type="button"
+                  onClick={() => setStatus("idle")}
+                  className="btn btn-secondary mt-2"
+                >
+                  Send another message
                 </button>
               </div>
-            </form>
+            ) : (
+              <form
+                className="surface p-7 md:p-9 space-y-5"
+                onSubmit={handleSubmit}
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <Input label="Your name" name="name" required />
+                  <Input label="Email" name="email" type="email" required />
+                </div>
+                <div>
+                  <label className="kicker mb-2 block">Hiring for</label>
+                  <select
+                    name="role"
+                    className="w-full px-4 py-3 rounded-lg bg-[color:var(--bg)] border border-[color:var(--border)] text-sm focus:border-[color:var(--ink)] outline-none"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Select a role…
+                    </option>
+                    <option>AI / Prompt Engineer</option>
+                    <option>Product Manager</option>
+                    <option>Business Analyst</option>
+                    <option>Operations Manager</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="kicker mb-2 block">Message</label>
+                  <textarea
+                    rows={4}
+                    name="message"
+                    required
+                    className="w-full px-4 py-3 rounded-lg bg-[color:var(--bg)] border border-[color:var(--border)] text-sm focus:border-[color:var(--ink)] outline-none resize-none"
+                    placeholder="A quick note about the role, team, or question."
+                  />
+                </div>
+                <div className="flex items-center justify-between gap-4">
+                  <p
+                    className={`text-xs ${
+                      status === "error"
+                        ? "text-red-600"
+                        : "text-[color:var(--ink-soft)]"
+                    }`}
+                    aria-live="polite"
+                  >
+                    {status === "submitting"
+                      ? "Sending…"
+                      : status === "error"
+                      ? errorMsg
+                      : "I reply within 24 hours."}
+                  </p>
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                    disabled={status === "submitting"}
+                  >
+                    {status === "submitting" ? "Sending…" : "Send message"}
+                  </button>
+                </div>
+              </form>
+            )}
           </Reveal>
         </div>
       </div>
@@ -98,10 +172,12 @@ function Input({
   label,
   name,
   type = "text",
+  required = false,
 }: {
   label: string;
   name: string;
   type?: string;
+  required?: boolean;
 }) {
   return (
     <div>
@@ -109,6 +185,7 @@ function Input({
       <input
         type={type}
         name={name}
+        required={required}
         className="w-full px-4 py-3 rounded-lg bg-[color:var(--bg)] border border-[color:var(--border)] text-sm focus:border-[color:var(--ink)] outline-none"
       />
     </div>

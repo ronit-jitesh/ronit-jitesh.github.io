@@ -44,6 +44,8 @@ export const heroByLens: Record<
   },
 };
 
+export type ProofItem = { label: string; href?: string };
+
 export type CaseStudy = {
   id: string;
   tag: string;
@@ -54,7 +56,7 @@ export type CaseStudy = {
   approach: string[];
   stack: string[];
   outcome: string;
-  proof: string[];
+  proof: ProofItem[];
   status?: "live" | "in-progress" | "shipped";
 };
 
@@ -85,7 +87,10 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     outcome:
       "Core features built and validated. Architecture designed for UK ICO/GDPR and Indian DPDP Act 2023 compliance. 20 of 25 research hypotheses validated. Two features cut after interviews saved weeks of build time. Most Viable Business Award, Edinburgh Startup Fast Track 2025 (AfterWard — a related healthcare concept validated during the programme).",
-    proof: ["90-sec Loom walkthrough", "Architecture diagram"],
+    proof: [
+      { label: "Code on GitHub", href: "https://github.com/ronit-jitesh/Oraii-UK" },
+      { label: "Architecture diagram" },
+    ],
     status: "in-progress",
   },
   siemens: {
@@ -106,7 +111,11 @@ export const caseStudies: Record<string, CaseStudy> = {
     stack: ["Python", "FAISS", "Llama 3", "Streamlit", "Docker", "LangChain"],
     outcome:
       "Dissertation in progress — submission Aug 2026. Benchmark results published on completion. Flagged during a Siemens review as the strongest retrieval approach in the cohort to date.",
-    proof: ["Retrieval flow GIF", "Architecture diagram"],
+    proof: [
+      { label: "Code on GitHub", href: "https://github.com/ronit-jitesh/Industrial-Repair-Companion" },
+      { label: "Companion POC — SOP migration", href: "https://github.com/ronit-jitesh/Document-Migration" },
+      { label: "Architecture diagram" },
+    ],
     status: "in-progress",
   },
   lkq: {
@@ -133,7 +142,10 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     outcome:
       "$1.2M in underperforming inventory surfaced. 1M+ SKUs enriched. 40% reduction in manual effort. 25% improvement in catalogue enrichment rates. Dashboards adopted across three business units.",
-    proof: ["Anonymised dashboard screenshot", "Process diagram"],
+    proof: [
+      { label: "Anonymised dashboard screenshot" },
+      { label: "Process diagram" },
+    ],
     status: "shipped",
   },
 };
@@ -276,4 +288,5 @@ export const profile = {
   github: "https://github.com/ronit-jitesh",
   calendly: "#", // placeholder — paste your Calendly URL here
   cv: "/Ronit_Jitesh_CV.pdf",
+  formspree: "https://formspree.io/f/xeevlvbk",
 };
