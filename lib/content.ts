@@ -8,25 +8,25 @@ export const heroByLens: Record<
 > = {
   ai: {
     display: "Building AI that earns its place in real workflows.",
-    sub: "MSc Business Analytics, Edinburgh. Co-founder of ORAII — a live clinical AI SaaS. Dissertation partner with Siemens Digital Industries. Two years of commercial data analytics across US, Canada, and EU markets.",
+    sub: "MSc Business Analytics, Edinburgh. Building ORAII, an AI clinical documentation platform for mental health practitioners. Dissertation partner with Siemens Digital Industries. Two years of commercial data analytics across US, Canada, and EU markets.",
     metrics: [
       { value: "90%+", label: "accuracy on the adaptive NLI hybrid classifier (BERT + GPT-4o)" },
-      { value: "20+", label: "therapist interviews shipped into a live AI product" },
+      { value: "25", label: "therapist interviews conducted before writing a line of code" },
       { value: "1M+", label: "SKUs enriched across three international portfolios" },
     ],
   },
   product: {
     display: "Products that ship, from research to release.",
-    sub: "Co-founder of ORAII — 25 user interviews turned into a live AI SaaS. Two years turning commercial data into decisions across three international markets. MSc Business Analytics, Edinburgh.",
+    sub: "Building ORAII — 25 user interviews turned into a validated AI clinical platform. Two years turning commercial data into decisions across three international markets. MSc Business Analytics, Edinburgh.",
     metrics: [
-      { value: "20 / 25", label: "research hypotheses validated in production" },
+      { value: "20 / 25", label: "research hypotheses validated before first line of code" },
       { value: "$1.2M", label: "inventory insight surfaced at LKQ" },
       { value: "Winner", label: "Most Viable Business — Edinburgh Startup Fast Track 2025" },
     ],
   },
   analyst: {
     display: "Turning commercial data into decisions stakeholders trust.",
-    sub: "Two years at LKQ India delivering executive dashboards across US, Canada, and EU portfolios. MSc Business Analytics, Edinburgh. Building ORAII — a live AI clinical platform — in parallel.",
+    sub: "Two years at LKQ India delivering executive dashboards across US, Canada, and EU portfolios. MSc Business Analytics, Edinburgh. Building ORAII, an AI clinical documentation platform, in parallel.",
     metrics: [
       { value: "$1.2M", label: "underperforming inventory surfaced through category scorecards" },
       { value: "25%", label: "lift in catalogue enrichment rates" },
@@ -35,7 +35,7 @@ export const heroByLens: Record<
   },
   ops: {
     display: "Operational analytics, built on an engineering foundation.",
-    sub: "Mechanical engineer with two years of commercial analytics across US, Canada, and EU markets. MSc Business Analytics, Edinburgh — scheduling, simulation, DEA. Building a live AI product end-to-end.",
+    sub: "Mechanical engineer with two years of commercial analytics across US, Canada, and EU markets. MSc Business Analytics, Edinburgh — scheduling, simulation, DEA. Building a clinical AI platform end-to-end.",
     metrics: [
       { value: "40%", label: "reduction in manual effort across enrichment workflows" },
       { value: "1M+", label: "SKUs handled across three international portfolios" },
@@ -61,13 +61,13 @@ export type CaseStudy = {
 export const caseStudies: Record<string, CaseStudy> = {
   oraii: {
     id: "oraii",
-    tag: "AI Product · Co-founder · Live",
+    tag: "AI Product · Personal Project · In Development",
     title: "ORAII — Clinical Co-Pilot",
     oneLine:
-      "A live AI documentation platform that gives therapists back 30 minutes per session.",
+      "An AI documentation platform being built to give therapists back 30 minutes per session.",
     context:
-      "Therapists spend 20–30 minutes after each session writing SOAP and DAP notes. I ran 25 private-practice interviews; 20 confirmed the problem was worth solving — and specifically, that India had no compliant AI documentation tool on the market.",
-    role: "Co-founder. Owned discovery, architecture, full-stack build, and go-to-market.",
+      "Therapists spend 20–30 minutes after each session writing SOAP and DAP notes. I ran 25 private-practice interviews; 20 confirmed the problem was worth solving — and specifically, that there was no compliant AI documentation tool built for mental health practitioners.",
+    role: "Sole builder. Owned discovery, architecture, full-stack build, and go-to-market research.",
     approach: [
       "25 structured therapist interviews before writing a line of code",
       "Chose real-time transcription plus clinical note generation as the wedge feature",
@@ -84,9 +84,9 @@ export const caseStudies: Record<string, CaseStudy> = {
       "PostgreSQL",
     ],
     outcome:
-      "Live product in India and the UK. Most Viable Business, Edinburgh Startup Fast Track 2025. 20 of 25 research hypotheses validated in production. Two features cut after interviews saved weeks of build time.",
-    proof: ["90-sec Loom walkthrough", "Live demo", "Architecture diagram"],
-    status: "live",
+      "Core features built and validated. Architecture designed for UK ICO/GDPR and Indian DPDP Act 2023 compliance. 20 of 25 research hypotheses validated. Two features cut after interviews saved weeks of build time. Most Viable Business Award, Edinburgh Startup Fast Track 2025 (AfterWard — a related healthcare concept validated during the programme).",
+    proof: ["90-sec Loom walkthrough", "Architecture diagram"],
+    status: "in-progress",
   },
   siemens: {
     id: "siemens",
@@ -176,14 +176,14 @@ export const experience: ExperienceEntry[] = [
     ],
   },
   {
-    company: "ORAII — Clinical Co-Pilot",
-    role: "Co-founder",
+    company: "ORAII — Clinical AI Platform",
+    role: "Builder",
     period: "2024 – present",
     bullets: [
-      "Built and launched a full-stack AI SaaS during MSc — Next.js 15, Supabase, GPT-4o, Deepgram",
-      "Ran 25 therapist interviews; validated 20 of 25 hypotheses before first commit",
+      "Building a full-stack clinical AI platform during MSc — Next.js 15, Supabase, GPT-4o, Deepgram",
+      "Ran 25 therapist interviews; validated 20 of 25 hypotheses before writing a line of code",
       "Shipped SOAP/DAP/GIRP/BIRP note generation, C-SSRS risk scoring, ICD-10/CPT billing, Hinglish speech support",
-      "Winner: Most Viable Business, Edinburgh Startup Fast Track 2025",
+      "Most Viable Business Award for AfterWard, Edinburgh Startup Fast Track 2025",
     ],
   },
 ];
@@ -198,7 +198,7 @@ export const education = [
     extras: [
       "Dissertation: Industrial Repair Companion Chatbot (Dual-Source RAG) — Siemens Digital Industries",
       "Social Representative, Edinburgh Business School",
-      "Award: Most Viable Business — Edinburgh Startup Fast Track 2025",
+      "Award: Most Viable Business — Edinburgh Startup Fast Track 2025 (AfterWard)",
     ],
   },
   {
