@@ -15,15 +15,6 @@ export const heroByLens: Record<
       { value: "1M+", label: "SKUs enriched across three international portfolios" },
     ],
   },
-  product: {
-    display: "Products that ship, from research to release.",
-    sub: "Building ORAII — 25 user interviews turned into a validated AI clinical platform. Two years turning commercial data into decisions across three international markets. MSc Business Analytics, Edinburgh.",
-    metrics: [
-      { value: "20 / 25", label: "research hypotheses validated before first line of code" },
-      { value: "$1.2M", label: "inventory insight surfaced at LKQ" },
-      { value: "Winner", label: "Most Viable Business — Edinburgh Startup Fast Track 2025" },
-    ],
-  },
   analyst: {
     display: "Turning commercial data into decisions stakeholders trust.",
     sub: "Two years at LKQ India delivering executive dashboards across US, Canada, and EU portfolios. MSc Business Analytics, Edinburgh. Building ORAII, an AI clinical documentation platform, in parallel.",
@@ -31,15 +22,6 @@ export const heroByLens: Record<
       { value: "$1.2M", label: "underperforming inventory surfaced through category scorecards" },
       { value: "25%", label: "lift in catalogue enrichment rates" },
       { value: "60%", label: "reduction in data error rates through automated validation" },
-    ],
-  },
-  ops: {
-    display: "Operational analytics, built on an engineering foundation.",
-    sub: "Mechanical engineer with two years of commercial analytics across US, Canada, and EU markets. MSc Business Analytics, Edinburgh — scheduling, simulation, DEA. Building a clinical AI platform end-to-end.",
-    metrics: [
-      { value: "40%", label: "reduction in manual effort across enrichment workflows" },
-      { value: "1M+", label: "SKUs handled across three international portfolios" },
-      { value: "60%", label: "reduction in error rates on master data pipelines" },
     ],
   },
 };
@@ -86,7 +68,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "PostgreSQL",
     ],
     outcome:
-      "Core features built and validated. Architecture designed for UK ICO/GDPR and Indian DPDP Act 2023 compliance. 20 of 25 research hypotheses validated. Two features cut after interviews saved weeks of build time. Most Viable Business Award, Edinburgh Startup Fast Track 2025 (AfterWard — a related healthcare concept validated during the programme).",
+      "Core features built and validated. Architecture designed for UK ICO/GDPR and Indian DPDP Act 2023 compliance. 20 of 25 research hypotheses validated. Two features cut after interviews saved weeks of build time. ORAII grew out of AfterWard — a post-medical follow-up concept I helped validate on Edinburgh's Startup Fast Track 2025; the team won Most Viable Business for it.",
     proof: [
       { label: "Code on GitHub", href: "https://github.com/ronit-jitesh/Oraii-UK" },
       { label: "Architecture diagram" },
@@ -152,9 +134,7 @@ export const caseStudies: Record<string, CaseStudy> = {
 
 export const workOrderByLens: Record<Lens, string[]> = {
   ai: ["oraii", "siemens", "lkq"],
-  product: ["oraii", "lkq", "siemens"],
   analyst: ["lkq", "oraii", "siemens"],
-  ops: ["lkq", "oraii", "siemens"],
 };
 
 export type ExperienceEntry = {
@@ -195,7 +175,18 @@ export const experience: ExperienceEntry[] = [
       "Building a full-stack clinical AI platform during MSc — Next.js 15, Supabase, GPT-4o, Deepgram",
       "Ran 25 therapist interviews; validated 20 of 25 hypotheses before writing a line of code",
       "Shipped SOAP/DAP/GIRP/BIRP note generation, C-SSRS risk scoring, ICD-10/CPT billing, Hinglish speech support",
-      "Most Viable Business Award for AfterWard, Edinburgh Startup Fast Track 2025",
+      "Directly inspired by AfterWard, a healthcare concept I helped validate on Edinburgh's Startup Fast Track 2025",
+    ],
+  },
+  {
+    company: "AfterWard — Edinburgh Startup Fast Track 2025",
+    role: "Team member · Concept validation",
+    period: "Nov 2025",
+    bullets: [
+      "Team project: a post-medical follow-up platform improving continuity of care between doctors and patients",
+      "Ran problem–solution fit work, user interviews, and go-to-market testing during the University of Edinburgh / Edinburgh Innovations programme",
+      "Won Most Viable Business — recognised for real-world applicability, problem–solution fit, and healthcare scalability",
+      "The experience directly led to ORAII, which I went on to build solo",
     ],
   },
 ];
@@ -210,7 +201,7 @@ export const education = [
     extras: [
       "Dissertation: Industrial Repair Companion Chatbot (Dual-Source RAG) — Siemens Digital Industries",
       "Social Representative, Edinburgh Business School",
-      "Award: Most Viable Business — Edinburgh Startup Fast Track 2025 (AfterWard)",
+      "Most Viable Business — Edinburgh Startup Fast Track 2025, awarded to AfterWard (team project that inspired ORAII)",
     ],
   },
   {

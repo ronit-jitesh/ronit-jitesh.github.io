@@ -65,7 +65,7 @@ export function Hero() {
           <span className="kicker whitespace-nowrap">Currently exploring</span>
           <div className="h-px flex-1 bg-[color:var(--border)]" />
           <span className="font-mono uppercase tracking-[0.14em] text-[11px] text-[color:var(--ink-muted)]">
-            AI · Product · Analytics · Ops
+            AI · Analytics
           </span>
         </div>
       </div>

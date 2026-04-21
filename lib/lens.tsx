@@ -9,13 +9,11 @@ import {
   useCallback,
 } from "react";
 
-export type Lens = "ai" | "product" | "analyst" | "ops";
+export type Lens = "ai" | "analyst";
 
 export const LENSES: { id: Lens; label: string; short: string }[] = [
-  { id: "ai", label: "AI / Prompt Engineer", short: "AI" },
-  { id: "product", label: "Product Manager", short: "Product" },
-  { id: "analyst", label: "Business Analyst", short: "Analyst" },
-  { id: "ops", label: "Operations Manager", short: "Ops" },
+  { id: "ai", label: "AI / Data Product role", short: "AI · Product" },
+  { id: "analyst", label: "Business Analyst role", short: "Analyst" },
 ];
 
 type Ctx = {

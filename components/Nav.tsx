@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { LensToggle } from "./LensToggle";
 
 const links = [
   { href: "#work", label: "Work" },
@@ -45,9 +44,12 @@ export function Nav() {
             </a>
           ))}
         </nav>
-        <div className="flex items-center gap-3">
-          <LensToggle compact />
-        </div>
+        <a
+          href="#contact"
+          className="text-sm font-medium text-[color:var(--ink)] hover:text-[color:var(--accent)] transition-colors"
+        >
+          Get in touch
+        </a>
       </div>
     </header>
   );
