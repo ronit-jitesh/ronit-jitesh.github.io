@@ -123,16 +123,16 @@ body {
   }
 }
 
-/* Reveal on scroll */
-.reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
-    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
-}
+/* Reveal on scroll — disabled.
+ * Content renders immediately to guarantee recruiters never hit a blank
+ * viewport on fast scroll or flaky IntersectionObserver behaviour. The
+ * Reveal component still runs its observer (adds `is-visible`) so we can
+ * re-enable a subtle fade later without code changes — just restore the
+ * opacity:0 starting state on `.reveal`. */
+.reveal,
 .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 /* Subtle section divider */
