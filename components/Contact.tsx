@@ -56,6 +56,11 @@ export function Contact() {
         <div className="mt-14 grid grid-cols-1 md:grid-cols-12 gap-10">
           <Reveal as="div" className="md:col-span-5 space-y-3">
             <ContactRow
+              label="Book a chat"
+              value="20 min · Google Meet"
+              href={profile.calendly}
+            />
+            <ContactRow
               label="Email"
               value={profile.email}
               href={`mailto:${profile.email}`}

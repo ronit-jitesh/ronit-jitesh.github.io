@@ -277,7 +277,7 @@ export const profile = {
   phone: "+44 7810 782484",
   linkedin: "https://www.linkedin.com/in/ronit-jitesh-440a1319b",
   github: "https://github.com/ronit-jitesh",
-  calendly: "#", // placeholder — paste your Calendly URL here
+  calendly: "https://calendly.com/ronitjitesh/ronit-intro-chat",
   cv: "/Ronit_Jitesh_CV.pdf",
   formspree: "https://formspree.io/f/xeevlvbk",
 };

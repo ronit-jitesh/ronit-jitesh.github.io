@@ -52,7 +52,12 @@ export function Hero() {
               />
             </svg>
           </a>
-          <a href="#contact" className="btn btn-secondary">
+          <a
+            href={profile.calendly}
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-secondary"
+          >
             Book a 20-min chat
           </a>
           <a href={profile.cv} download className="btn btn-secondary">
