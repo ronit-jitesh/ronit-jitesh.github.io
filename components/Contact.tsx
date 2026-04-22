@@ -111,23 +111,12 @@ export function Contact() {
                   <Input label="Your name" name="name" required />
                   <Input label="Email" name="email" type="email" required />
                 </div>
-                <div>
-                  <label className="kicker mb-2 block">Hiring for</label>
-                  <select
-                    name="role"
-                    className="w-full px-4 py-3 rounded-lg bg-[color:var(--bg)] border border-[color:var(--border)] text-sm focus:border-[color:var(--ink)] outline-none"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Select a role…
-                    </option>
-                    <option>AI / Prompt Engineer</option>
-                    <option>Product Manager</option>
-                    <option>Business Analyst</option>
-                    <option>Operations Manager</option>
-                    <option>Other</option>
-                  </select>
-                </div>
+                <Input
+                  label="What's the role?"
+                  name="role"
+                  placeholder="e.g. AI Engineer at Monzo, Data Product PM, Analyst at JPM"
+                />
+                <input type="hidden" name="_subject" value="Portfolio enquiry — Ronit Jitesh" />
                 <div>
                   <label className="kicker mb-2 block">Message</label>
                   <textarea
@@ -175,11 +164,13 @@ function Input({
   name,
   type = "text",
   required = false,
+  placeholder,
 }: {
   label: string;
   name: string;
   type?: string;
   required?: boolean;
+  placeholder?: string;
 }) {
   return (
     <div>
@@ -188,7 +179,8 @@ function Input({
         type={type}
         name={name}
         required={required}
-        className="w-full px-4 py-3 rounded-lg bg-[color:var(--bg)] border border-[color:var(--border)] text-sm focus:border-[color:var(--ink)] outline-none"
+        placeholder={placeholder}
+        className="w-full px-4 py-3 rounded-lg bg-[color:var(--bg)] border border-[color:var(--border)] text-sm focus:border-[color:var(--ink)] outline-none placeholder:text-[color:var(--ink-soft)]"
       />
     </div>
   );
