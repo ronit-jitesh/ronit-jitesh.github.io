@@ -103,6 +103,8 @@ export function Contact() {
             ) : (
               <form
                 className="surface p-7 md:p-9 space-y-5"
+                action={profile.formspree}
+                method="POST"
                 onSubmit={handleSubmit}
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">

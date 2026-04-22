@@ -274,7 +274,7 @@ export const profile = {
   name: "Ronit Jitesh",
   location: "Edinburgh, UK",
   email: "ronitjitesh@gmail.com",
-  phone: "+44 07810 782484",
+  phone: "+44 7810 782484",
   linkedin: "https://www.linkedin.com/in/ronit-jitesh-440a1319b",
   github: "https://github.com/ronit-jitesh",
   calendly: "#", // placeholder — paste your Calendly URL here

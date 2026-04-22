@@ -55,20 +55,23 @@ export function About() {
                 Siemens Digital Industries on industrial RAG.
               </p>
               <p>
-                In parallel, I co-founded{" "}
+                In parallel, I&apos;m building{" "}
                 <span className="text-[color:var(--ink)] font-medium">
                   ORAII
                 </span>{" "}
-                — an AI clinical documentation platform for therapists, live in
-                India and the UK. We won Most Viable Business at Edinburgh&apos;s
-                Startup Fast Track 2025. Building ORAII taught me more about
-                product than any course: how to interview users properly, cut
-                scope ruthlessly, and ship something people will actually use.
+                — an AI clinical documentation platform for therapists,
+                currently in development for the UK and India. ORAII grew out
+                of AfterWard, a post-medical follow-up concept I helped
+                validate with a team on Edinburgh&apos;s Startup Fast Track
+                2025; the team won Most Viable Business for it. Building both
+                has taught me more about product than any course: how to
+                interview users properly, cut scope ruthlessly, and ship
+                something people will actually use.
               </p>
               <p className="text-[color:var(--ink)]">
-                I&apos;m based in Edinburgh and looking for UK roles where I
-                can combine analytical rigour with hands-on building — across
-                AI, product, business analytics, and operations.
+                I&apos;m based in Edinburgh and looking for UK roles in AI,
+                data product, and business analytics — where I can combine
+                analytical rigour with hands-on building.
               </p>
               <p className="text-[15px] text-[color:var(--ink-soft)]">
                 Right to work: Student visa through Jan 2027, then UK Graduate
