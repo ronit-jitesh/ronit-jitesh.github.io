@@ -38,7 +38,7 @@ export function About() {
 
             <div className="mt-10 space-y-6 text-[17px] leading-relaxed text-[color:var(--ink-muted)] max-w-2xl">
               <p>
-                I started with a BEng in Mechanical Engineering — systems,
+                I started with a BEng in Mechanical Engineering: systems,
                 optimisation, and the habit of asking{" "}
                 <em className="text-[color:var(--ink)] font-display not-italic">
                   what actually breaks this?
@@ -47,7 +47,7 @@ export function About() {
               </p>
               <p>
                 Two years at LKQ India (EURO CAR PARTS Group) taught me
-                commercial analytics at scale — Power BI dashboards reviewed by
+                commercial analytics at scale. Power BI dashboards reviewed by
                 senior stakeholders in three markets, SQL pipelines across a
                 million SKUs, and data storytelling that actually moved
                 decisions. I&apos;m finishing my MSc Business Analytics at the
@@ -58,8 +58,8 @@ export function About() {
                 In parallel, I&apos;m building{" "}
                 <span className="text-[color:var(--ink)] font-medium">
                   ORAII
-                </span>{" "}
-                — an AI clinical documentation platform for therapists,
+                </span>
+                , an AI clinical documentation platform for therapists,
                 currently in development for the UK and India. ORAII grew out
                 of AfterWard, a post-medical follow-up concept I helped
                 validate with a team on Edinburgh&apos;s Startup Fast Track
@@ -70,8 +70,8 @@ export function About() {
               </p>
               <p className="text-[color:var(--ink)]">
                 I&apos;m based in Edinburgh and looking for UK roles in AI,
-                data product, and business analytics — where I can combine
-                analytical rigour with hands-on building.
+                data product, and business analytics, combining analytical
+                rigour with hands-on building.
               </p>
               <p className="text-[15px] text-[color:var(--ink-soft)]">
                 Right to work: Student visa through Jan 2027, then UK Graduate

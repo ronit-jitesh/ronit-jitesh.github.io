@@ -26,7 +26,7 @@ export function Writing() {
             </h3>
             <p className="mt-4 text-[color:var(--ink-muted)] leading-relaxed">
               Notes from evaluating dual-source retrieval against live
-              industrial field cases — what actually predicted answer
+              industrial field cases: what actually predicted answer
               quality, and what looked great in benchmarks but fell apart on
               the factory floor.
             </p>

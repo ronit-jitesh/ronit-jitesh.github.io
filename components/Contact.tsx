@@ -48,8 +48,8 @@ export function Contact() {
           </h2>
           <p className="mt-8 max-w-2xl text-lg text-[color:var(--ink-muted)]">
             I reply to every message. If you&apos;re hiring for an AI, product,
-            business analyst, or operations role in the UK — or just want to
-            talk about AI products — I&apos;d love to hear from you.
+            business analyst, or operations role in the UK, or just want to
+            talk about AI products, I&apos;d love to hear from you.
           </p>
         </Reveal>
 
@@ -91,7 +91,7 @@ export function Contact() {
               >
                 <div className="kicker text-[color:var(--accent)]">Sent</div>
                 <h3 className="font-display text-3xl md:text-4xl tracking-tight leading-[1.1]">
-                  Thanks — I&apos;ll reply within 24 hours.
+                  Thanks. I&apos;ll reply within 24 hours.
                 </h3>
                 <p className="text-[color:var(--ink-muted)] text-[15px] max-w-md">
                   In the meantime, feel free to check out my work on GitHub or

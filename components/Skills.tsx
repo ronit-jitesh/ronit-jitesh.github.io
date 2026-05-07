@@ -8,7 +8,7 @@ export function Skills() {
         <Reveal>
           <div className="kicker mb-4">Toolkit</div>
           <h2 className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05] max-w-[22ch]">
-            A mix that&apos;s unusual by design — engineering, analytics,
+            A mix that&apos;s unusual by design: engineering, analytics,
             and AI in one stack.
           </h2>
         </Reveal>

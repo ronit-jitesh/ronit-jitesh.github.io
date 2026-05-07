@@ -50,7 +50,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     oneLine:
       "An AI documentation platform being built to give therapists back 30 minutes per session.",
     context:
-      "Therapists spend 20–30 minutes after each session writing SOAP and DAP notes. I ran 25 private-practice interviews; 20 confirmed the problem was worth solving — and specifically, that there was no compliant AI documentation tool built for mental health practitioners.",
+      "Therapists spend 20–30 minutes after each session writing SOAP and DAP notes. I ran 25 private-practice interviews; 20 confirmed the problem was worth solving. Specifically, there was no compliant AI documentation tool built for mental health practitioners.",
     role: "Sole builder. Owned discovery, architecture, full-stack build, and go-to-market research.",
     approach: [
       "25 structured therapist interviews before writing a line of code",
@@ -68,7 +68,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "PostgreSQL",
     ],
     outcome:
-      "Core features built and validated. Architecture designed for UK ICO/GDPR and Indian DPDP Act 2023 compliance. 20 of 25 research hypotheses validated. Two features cut after interviews saved weeks of build time. ORAII grew out of AfterWard — a post-medical follow-up concept I helped validate on Edinburgh's Startup Fast Track 2025; the team won Most Viable Business for it.",
+      "Core features built and validated. Architecture designed for UK ICO/GDPR and Indian DPDP Act 2023 compliance. 20 of 25 research hypotheses validated. Two features cut after interviews saved weeks of build time. ORAII grew out of AfterWard, a post-medical follow-up concept I helped validate on Edinburgh's Startup Fast Track 2025; the team won Most Viable Business for it.",
     proof: [
       { label: "Code on GitHub", href: "https://github.com/ronit-jitesh/Oraii-UK" },
       { label: "Architecture diagram" },
@@ -82,17 +82,17 @@ export const caseStudies: Record<string, CaseStudy> = {
     oneLine:
       "A dual-source RAG chatbot helping engineers diagnose VFD faults using manuals and historical repair logs.",
     context:
-      "Siemens engineers spend hours searching across technical manuals and historical repair logs to diagnose variable-frequency drive faults. Neither source alone answers the question — you need both.",
+      "Siemens engineers spend hours searching across technical manuals and historical repair logs to diagnose variable-frequency drive faults. Neither source alone answers the question. You need both.",
     role: "Sole builder. Academic partner: Siemens Digital Industries.",
     approach: [
       "Dual-source retrieval: separate FAISS indices for manuals and repair logs, weighted fusion at query time",
-      "Llama 3 for generation — deployable on-prem, no data leaves the engineer's machine",
+      "Llama 3 for generation, deployable on-prem. No data leaves the engineer's machine",
       "Streamlit evaluation UI for Siemens engineer feedback, Docker for reproducibility",
       "Evaluation planned against live field cases from Siemens CSD",
     ],
     stack: ["Python", "FAISS", "Llama 3", "Streamlit", "Docker", "LangChain"],
     outcome:
-      "Dissertation in progress — submission Aug 2026. Benchmark results published on completion. Flagged during a Siemens review as the strongest retrieval approach in the cohort to date.",
+      "Dissertation in progress, submission Aug 2026. Benchmark results published on completion. Flagged during a Siemens review as the strongest retrieval approach in the cohort to date.",
     proof: [
       { label: "Code on GitHub", href: "https://github.com/ronit-jitesh/Industrial-Repair-Companion" },
       { label: "Companion POC — SOP migration", href: "https://github.com/ronit-jitesh/Document-Migration" },
@@ -107,11 +107,11 @@ export const caseStudies: Record<string, CaseStudy> = {
     oneLine:
       "How I surfaced $1.2M of underperforming inventory by joining operational and commercial data.",
     context:
-      "LKQ India's category performance data was fragmented across teams — no single view linking inventory health to sales outcomes. Senior business owners made weekly decisions on incomplete data.",
+      "LKQ India's category performance data was fragmented across teams, with no single view linking inventory health to sales outcomes. Senior business owners made weekly decisions on incomplete data.",
     role: "Product Master Data Analyst I — Business Intelligence & Analytics. Partnered with BI, product, and supply chain across US, Canada, and EU portfolios.",
     approach: [
       "Designed Power BI dashboards backed by SQL models linking operational outputs to commercial KPIs",
-      "Built automated Python and SQL validation scripts — reduced error rates by 60%",
+      "Built automated Python and SQL validation scripts, reducing error rates by 60%",
       "Created a repeatable data storytelling framework for vendor reviews",
       "Led performance reviews with senior stakeholders across three international markets",
     ],
@@ -172,7 +172,7 @@ export const experience: ExperienceEntry[] = [
     role: "Builder",
     period: "2024 – present",
     bullets: [
-      "Building a full-stack clinical AI platform during MSc — Next.js 15, Supabase, GPT-4o, Deepgram",
+      "Building a full-stack clinical AI platform during MSc: Next.js 15, Supabase, GPT-4o, Deepgram",
       "Ran 25 therapist interviews; validated 20 of 25 hypotheses before writing a line of code",
       "Shipped SOAP/DAP/GIRP/BIRP note generation, C-SSRS risk scoring, ICD-10/CPT billing, Hinglish speech support",
       "Directly inspired by AfterWard, a healthcare concept I helped validate on Edinburgh's Startup Fast Track 2025",
@@ -185,7 +185,7 @@ export const experience: ExperienceEntry[] = [
     bullets: [
       "Team project: a post-medical follow-up platform improving continuity of care between doctors and patients",
       "Ran problem–solution fit work, user interviews, and go-to-market testing during the University of Edinburgh / Edinburgh Innovations programme",
-      "Won Most Viable Business — recognised for real-world applicability, problem–solution fit, and healthcare scalability",
+      "Won Most Viable Business, recognised for real-world applicability, problem–solution fit, and healthcare scalability",
       "The experience directly led to ORAII, which I went on to build solo",
     ],
   },
@@ -199,9 +199,9 @@ export const education = [
     detail:
       "Predictive & Prescriptive Analytics · Simulation Modelling · Data Envelopment Analysis · Mathematical & Stochastic Programming",
     extras: [
-      "Dissertation: Industrial Repair Companion Chatbot (Dual-Source RAG) — Siemens Digital Industries",
+      "Dissertation: Industrial Repair Companion Chatbot (Dual-Source RAG), Siemens Digital Industries",
       "Social Representative, Edinburgh Business School",
-      "Most Viable Business — Edinburgh Startup Fast Track 2025, awarded to AfterWard (team project that inspired ORAII)",
+      "Most Viable Business, Edinburgh Startup Fast Track 2025, awarded to AfterWard (team project that inspired ORAII)",
     ],
   },
   {
