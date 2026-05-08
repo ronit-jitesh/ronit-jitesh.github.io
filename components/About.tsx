@@ -81,6 +81,32 @@ export function About() {
             </div>
           </Reveal>
         </div>
+
+        {/* GitHub contribution graph */}
+        <Reveal delay={160}>
+          <div className="mt-14 surface p-6 md:p-8">
+            <div className="flex items-center justify-between mb-5">
+              <div className="kicker">Code activity</div>
+              <a
+                href="https://github.com/ronit-jitesh"
+                target="_blank"
+                rel="noreferrer"
+                className="text-[11px] font-mono tracking-wider text-[color:var(--ink-soft)] hover:text-[color:var(--accent)] transition-colors uppercase"
+              >
+                github.com/ronit-jitesh ↗
+              </a>
+            </div>
+            <img
+              src="https://ghchart.rshah.org/1b2a4e/ronit-jitesh"
+              alt="Ronit Jitesh GitHub contribution graph"
+              className="w-full rounded"
+              style={{ mixBlendMode: "multiply" }}
+            />
+            <p className="mt-4 text-[12px] text-[color:var(--ink-soft)] font-mono tracking-wide">
+              132 contributions in the last year
+            </p>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
