@@ -5,10 +5,11 @@ import { Experience } from "@/components/Experience";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { Nav } from "@/components/Nav";
+import { OperatingModel } from "@/components/OperatingModel";
 import { ProofStrip } from "@/components/ProofStrip";
+import { RecruiterGuide } from "@/components/RecruiterGuide";
 import { Skills } from "@/components/Skills";
 import { Work } from "@/components/Work";
-import { Writing } from "@/components/Writing";
 
 export default function Home() {
   return (
@@ -16,13 +17,14 @@ export default function Home() {
       <Nav />
       <main className="relative z-10">
         <Hero />
+        <RecruiterGuide />
         <ProofStrip />
+        <OperatingModel />
         <Work />
         <About />
         <Experience />
         <Education />
         <Skills />
-        <Writing />
         <Contact />
       </main>
       <Footer />

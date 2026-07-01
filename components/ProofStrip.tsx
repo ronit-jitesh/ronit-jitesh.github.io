@@ -1,20 +1,14 @@
-"use client";
-
-import { heroByLens } from "@/lib/content";
-import { useLens } from "@/lib/lens";
+import { metrics } from "@/lib/content";
 
 export function ProofStrip() {
-  const { lens } = useLens();
-  const { metrics } = heroByLens[lens];
-
   return (
-    <section className="py-14 md:py-20 border-y border-[color:var(--border)] bg-[color:var(--bg-elev)]">
+    <section
+      id="proof"
+      className="scroll-mt-24 py-14 md:py-20 border-y border-[color:var(--border)] bg-[color:var(--bg-elev)]"
+    >
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         <div className="kicker mb-8">Proof in numbers</div>
-        <div
-          key={lens}
-          className="lens-fade grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6">
           {metrics.map((m, i) => (
             <div
               key={i}

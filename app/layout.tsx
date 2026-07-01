@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Instrument_Serif, Inter } from "next/font/google";
 import "./globals.css";
-import { LensProvider } from "@/lib/lens";
 
 const display = Instrument_Serif({
   variable: "--font-display",
@@ -17,14 +16,14 @@ const sans = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ronit-jitesh.github.io"),
-  title: "Ronit Jitesh — AI, Product, Analytics",
+  title: "Ronit Jitesh — AI Analyst",
   description:
-    "MSc Business Analytics, Edinburgh. Co-founder of ORAII. Dissertation partner at Siemens Digital Industries. Two years of commercial analytics across US, Canada, and EU.",
+    "AI analyst who validates the problem with data, then builds the AI that solves it. MSc Business Analytics, Edinburgh. Builder of ORAII. Dissertation partner at Siemens Digital Industries. Two years of commercial analytics across US, Canada, and EU.",
   authors: [{ name: "Ronit Jitesh" }],
   openGraph: {
-    title: "Ronit Jitesh — AI, Product, Analytics",
+    title: "Ronit Jitesh — AI Analyst",
     description:
-      "Building AI that earns its place in real workflows. Edinburgh, UK.",
+      "I validate the problem with data, then build the AI that solves it. Edinburgh, UK.",
     url: "https://ronit-jitesh.github.io",
     siteName: "Ronit Jitesh",
     locale: "en_GB",
@@ -43,9 +42,7 @@ export default function RootLayout({
       lang="en-GB"
       className={`${display.variable} ${sans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col grain">
-        <LensProvider>{children}</LensProvider>
-      </body>
+      <body className="min-h-full flex flex-col grain">{children}</body>
     </html>
   );
 }

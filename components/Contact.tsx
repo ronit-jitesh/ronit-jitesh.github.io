@@ -47,9 +47,10 @@ export function Contact() {
             Let&apos;s build something worth shipping.
           </h2>
           <p className="mt-8 max-w-2xl text-lg text-[color:var(--ink-muted)]">
-            I reply to every message. If you&apos;re hiring for an AI, product,
-            business analyst, or operations role in the UK, or just want to
-            talk about AI products, I&apos;d love to hear from you.
+            I reply to every message. If you&apos;re hiring for an AI analyst,
+            applied AI, or data-product role in the UK, or just want to talk
+            about building AI that earns its place, I&apos;d love to hear from
+            you.
           </p>
         </Reveal>
 
@@ -119,7 +120,7 @@ export function Contact() {
                 <Input
                   label="What's the role?"
                   name="role"
-                  placeholder="e.g. AI Engineer at Monzo, Data Product PM, Analyst at JPM"
+                  placeholder="e.g. AI Analyst, Applied AI Engineer, Data Product Analyst"
                 />
                 <input type="hidden" name="_subject" value="Portfolio enquiry — Ronit Jitesh" />
                 <div>

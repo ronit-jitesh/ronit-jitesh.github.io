@@ -1,7 +1,4 @@
-"use client";
-
-import { caseStudies, workOrderByLens } from "@/lib/content";
-import { useLens } from "@/lib/lens";
+import { caseStudies, workOrder } from "@/lib/content";
 import { Reveal } from "./Reveal";
 
 const statusBadge = (status?: string) => {
@@ -30,26 +27,23 @@ const statusBadge = (status?: string) => {
 };
 
 export function Work() {
-  const { lens } = useLens();
-  const order = workOrderByLens[lens];
-
   return (
-    <section id="work" className="py-24 md:py-36">
+    <section id="work" className="scroll-mt-24 py-24 md:py-36">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         <Reveal>
           <div className="kicker mb-4">Featured Work</div>
           <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-[1.05] max-w-[18ch]">
-            Three projects that prove the rest.
+            Four projects that prove the rest.
           </h2>
           <p className="mt-6 max-w-2xl text-[color:var(--ink-muted)]">
-            Each case study covers the context, what I decided, what I shipped,
-            and what it changed. Re-ordered to match the role you&apos;re
-            hiring for.
+            Each case study follows the same arc: validate the problem, build
+            the AI, prove it worked. Context, what I decided, what I shipped,
+            and what it changed.
           </p>
         </Reveal>
 
-        <div key={lens} className="lens-fade mt-16 md:mt-20 space-y-20 md:space-y-28">
-          {order.map((id, idx) => {
+        <div className="mt-16 md:mt-20 space-y-20 md:space-y-28">
+          {workOrder.map((id, idx) => {
             const c = caseStudies[id];
             const isEven = idx % 2 === 0;
             return (
@@ -69,6 +63,8 @@ export function Work() {
                             ? "ORAII"
                             : c.id === "siemens"
                             ? "Siemens"
+                            : c.id === "astroverse"
+                            ? "Astroverse"
                             : "LKQ"}
                         </span>
                       </div>
@@ -251,6 +247,37 @@ function MediaMock({ id }: { id: string }) {
         </div>
         <div className="absolute bottom-4 right-4 font-mono text-[10px] text-[#7896c9] uppercase tracking-widest">
           FAISS · Dual-Source RAG
+        </div>
+      </div>
+    );
+  }
+  if (id === "astroverse") {
+    return (
+      <div className="absolute inset-0 bg-gradient-to-br from-[#eef0f6] via-[#e3e6f0] to-[#cfd5e8]">
+        <div className="absolute inset-6 bg-[color:var(--bg)] rounded-2xl shadow-inner border border-[color:var(--border)] p-4 flex flex-col">
+          <div className="flex items-center gap-1.5">
+            <span className="h-2 w-2 rounded-full bg-[#e06c5a]" />
+            <span className="h-2 w-2 rounded-full bg-[#e0b35a]" />
+            <span className="h-2 w-2 rounded-full bg-[#7fa96b]" />
+          </div>
+          <div className="mt-4 kicker">Pipeline · Order #4821</div>
+          <div className="mt-3 space-y-2.5 font-mono text-[11px]">
+            {[
+              "Payment verified",
+              "LLM analysis",
+              "PDF rendered",
+              "Email sent · HI",
+            ].map((step) => (
+              <div key={step} className="flex items-center justify-between">
+                <span className="text-[color:var(--ink-muted)]">{step}</span>
+                <span className="text-[#7fa96b]">✓</span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-auto flex items-center justify-between">
+            <span className="pill">Delivered</span>
+            <span className="kicker">2m 14s</span>
+          </div>
         </div>
       </div>
     );

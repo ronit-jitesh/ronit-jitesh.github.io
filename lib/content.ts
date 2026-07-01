@@ -1,30 +1,40 @@
-import type { Lens } from "./lens";
-
 export type Metric = { value: string; label: string };
 
-export const heroByLens: Record<
-  Lens,
-  { display: string; sub: string; metrics: [Metric, Metric, Metric] }
-> = {
-  ai: {
-    display: "Building AI that earns its place in real workflows.",
-    sub: "MSc Business Analytics, Edinburgh. Building ORAII, an AI clinical documentation platform for mental health practitioners. Dissertation partner with Siemens Digital Industries. Two years of commercial data analytics across US, Canada, and EU markets.",
-    metrics: [
-      { value: "90%+", label: "accuracy on the adaptive NLI hybrid classifier (BERT + GPT-4o)" },
-      { value: "25", label: "therapist interviews conducted before writing a line of code" },
-      { value: "1M+", label: "SKUs enriched across three international portfolios" },
-    ],
-  },
-  analyst: {
-    display: "Turning commercial data into decisions stakeholders trust.",
-    sub: "Two years at LKQ India delivering executive dashboards across US, Canada, and EU portfolios. MSc Business Analytics, Edinburgh. Building ORAII, an AI clinical documentation platform, in parallel.",
-    metrics: [
-      { value: "$1.2M", label: "underperforming inventory surfaced through category scorecards" },
-      { value: "25%", label: "lift in catalogue enrichment rates" },
-      { value: "60%", label: "reduction in data error rates through automated validation" },
-    ],
-  },
+/**
+ * Single, unified positioning. The old two-lens (AI vs Analyst) toggle was
+ * removed deliberately: it signalled two identities. Everything now serves one
+ * story — an AI analyst who validates the problem with data, then builds the AI
+ * that solves it, then measures whether it worked.
+ */
+export const hero: { display: string; sub: string } = {
+  display:
+    "I validate the problem with data, then build the AI that solves it.",
+  sub: "AI analyst with two years of commercial analytics at LKQ across US, Canada, and EU markets, now finishing an MSc Business Analytics at Edinburgh. I use that instinct for what the data actually says to build AI products people rely on: ORAII (clinical documentation for therapists), a live automated report pipeline, and a dual-source RAG system with Siemens. I find the problem worth solving, then ship the thing.",
 };
+
+export const metrics: [Metric, Metric, Metric] = [
+  {
+    value: "$1.2M",
+    label:
+      "in underperforming inventory surfaced at LKQ, by joining data nobody had linked",
+  },
+  {
+    value: "25 → 1",
+    label:
+      "therapists contacted; one in-depth interview cut two features before they cost a week of build",
+  },
+  {
+    value: "4",
+    label:
+      "AI and data products built end-to-end, one live in production (Astroverse)",
+  },
+];
+
+/**
+ * The one-line identity, used in the About section and the overlap diagram.
+ */
+export const positioningStatement =
+  "Data analysts report on the problem. Engineers build the solution. The AI analyst is the rare overlap: proves the problem is real with data, then builds the thing anyway, and measures whether it worked.";
 
 export type ProofItem = { label: string; href?: string };
 
@@ -48,12 +58,13 @@ export const caseStudies: Record<string, CaseStudy> = {
     tag: "AI Product · Personal Project · In Development",
     title: "ORAII — Clinical Co-Pilot",
     oneLine:
-      "An AI documentation platform being built to give therapists back 30 minutes per session.",
+      "25 therapists contacted, one interview, two features cut before they cost a week of build.",
     context:
-      "Therapists spend 20–30 minutes after each session writing SOAP and DAP notes. I ran 25 private-practice interviews; 20 confirmed the problem was worth solving. Specifically, there was no compliant AI documentation tool built for mental health practitioners.",
+      "Therapists spend 20–30 minutes after each session writing SOAP and DAP notes. I contacted 25 private-practice therapists; one in-depth structured interview, with a licensed practitioner, confirmed the problem was worth solving and specifically, that there was no compliant AI documentation tool built for mental health practitioners.",
     role: "Sole builder. Owned discovery, architecture, full-stack build, and go-to-market research.",
     approach: [
-      "25 structured therapist interviews before writing a line of code",
+      "Validated first: contacted 25 private-practice therapists and built on one in-depth structured interview with a licensed practitioner before writing a line of code",
+      "Prompt-engineered GPT-4o to generate four clinical note formats (SOAP, DAP, GIRP, BIRP) and score C-SSRS risk directly from session transcripts",
       "Chose real-time transcription plus clinical note generation as the wedge feature",
       "Built Hinglish support via Sarvam AI saaras-v3 as an India-specific moat",
       "Shipped a two-sided platform (therapist and patient portal) in one academic year, zero external funding",
@@ -68,34 +79,9 @@ export const caseStudies: Record<string, CaseStudy> = {
       "PostgreSQL",
     ],
     outcome:
-      "Core features built and validated. Architecture designed for UK ICO/GDPR and Indian DPDP Act 2023 compliance. 20 of 25 research hypotheses validated. Two features cut after interviews saved weeks of build time. ORAII grew out of AfterWard, a post-medical follow-up concept I helped validate on Edinburgh's Startup Fast Track 2025; the team won Most Viable Business for it.",
+      "Core features built and validated against one in-depth practitioner interview and supporting market research. Architecture designed for UK ICO/GDPR and Indian DPDP Act 2023 compliance. Two features cut after that interview saved weeks of build time. ORAII grew out of AfterWard, a post-medical follow-up concept I helped validate on Edinburgh's Startup Fast Track 2025; the team won Most Viable Business for it.",
     proof: [
       { label: "Code on GitHub", href: "https://github.com/ronit-jitesh/Oraii-UK" },
-      { label: "Architecture diagram" },
-    ],
-    status: "in-progress",
-  },
-  siemens: {
-    id: "siemens",
-    tag: "RAG · MSc Dissertation · Siemens Digital Industries",
-    title: "Siemens Industrial Repair Companion",
-    oneLine:
-      "A dual-source RAG chatbot helping engineers diagnose VFD faults using manuals and historical repair logs.",
-    context:
-      "Siemens engineers spend hours searching across technical manuals and historical repair logs to diagnose variable-frequency drive faults. Neither source alone answers the question. You need both.",
-    role: "Sole builder. Academic partner: Siemens Digital Industries.",
-    approach: [
-      "Dual-source retrieval: separate FAISS indices for manuals and repair logs, weighted fusion at query time",
-      "Llama 3 for generation, deployable on-prem. No data leaves the engineer's machine",
-      "Streamlit evaluation UI for Siemens engineer feedback, Docker for reproducibility",
-      "Evaluation planned against live field cases from Siemens CSD",
-    ],
-    stack: ["Python", "FAISS", "Llama 3", "Streamlit", "Docker", "LangChain"],
-    outcome:
-      "Dissertation in progress, submission Aug 2026. Benchmark results published on completion. Flagged during a Siemens review as the strongest retrieval approach in the cohort to date.",
-    proof: [
-      { label: "Code on GitHub", href: "https://github.com/ronit-jitesh/Industrial-Repair-Companion" },
-      { label: "Companion POC — SOP migration", href: "https://github.com/ronit-jitesh/Document-Migration" },
       { label: "Architecture diagram" },
     ],
     status: "in-progress",
@@ -105,7 +91,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     tag: "BI · 2 Years Industry · EURO CAR PARTS Group",
     title: "LKQ — Commercial Analytics at Scale",
     oneLine:
-      "How I surfaced $1.2M of underperforming inventory by joining operational and commercial data.",
+      "$1.2M of dead inventory, surfaced from data nobody had joined.",
     context:
       "LKQ India's category performance data was fragmented across teams, with no single view linking inventory health to sales outcomes. Senior business owners made weekly decisions on incomplete data.",
     role: "Product Master Data Analyst I — Business Intelligence & Analytics. Partnered with BI, product, and supply chain across US, Canada, and EU portfolios.",
@@ -130,12 +116,64 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     status: "shipped",
   },
+  siemens: {
+    id: "siemens",
+    tag: "RAG · MSc Dissertation · Siemens Digital Industries",
+    title: "Siemens Industrial Repair Companion",
+    oneLine:
+      "Manuals plus repair logs, fused into a five-second answer, on-prem.",
+    context:
+      "Siemens engineers spend hours searching across technical manuals and historical repair logs to diagnose variable-frequency drive faults. Neither source alone answers the question. You need both.",
+    role: "Sole builder. Academic partner: Siemens Digital Industries.",
+    approach: [
+      "Dual-source retrieval: separate FAISS indices for manuals and repair logs, weighted fusion at query time",
+      "Llama 3 for generation, deployable on-prem. No data leaves the engineer's machine",
+      "Streamlit evaluation UI for Siemens engineer feedback, Docker for reproducibility",
+      "Evaluation planned against live field cases from Siemens CSD",
+    ],
+    stack: ["Python", "FAISS", "Llama 3", "Streamlit", "Docker", "LangChain"],
+    outcome:
+      "Dissertation in progress, submission Aug 2026. Benchmark results published on completion. Flagged during a Siemens review as the strongest retrieval approach in the cohort to date.",
+    proof: [
+      { label: "Code on GitHub", href: "https://github.com/ronit-jitesh/Industrial-Repair-Companion" },
+      { label: "Companion POC — SOP migration", href: "https://github.com/ronit-jitesh/Document-Migration" },
+      { label: "Architecture diagram" },
+    ],
+    status: "in-progress",
+  },
+  astroverse: {
+    id: "astroverse",
+    tag: "Live Product · Co-Founder · Production Pipeline",
+    title: "Astroverse — Automated Delivery Pipeline",
+    oneLine:
+      "Payment to typeset PDF in minutes, with zero humans in the loop.",
+    context:
+      "Astroverse sells AI-generated reports to paying customers in English and Hindi, built with a co-founder. A customer pays, then needs a finished, professionally typeset PDF delivered automatically, in their own language, usually within minutes, with zero manual intervention.",
+    role: "Co-founder. Owned the layer between the product and the customer: post-purchase pipeline, production infrastructure, deployment process, and technical SEO, across a live, revenue-generating product shipped alongside a second developer.",
+    approach: [
+      "Built the Python worker pipeline: polls Supabase for new submissions, runs LLM-assisted analysis, executes a notebook, renders LaTeX to PDF, uploads to storage, updates status",
+      "Designed the delivery layer to never throw — a transient email failure can't roll back a paid, already-generated report. Every failure path is handled, including failures while logging the failure",
+      "Integrated transactional email over verified DNS (SPF, DKIM, DMARC) from a custom domain, with delivery language matched automatically to the report language",
+      "Shipped the technical SEO foundation from zero: dynamic sitemap and robots.txt, Open Graph and JSON-LD structured data, indexed and verified through Google Search Console",
+      "Diagnosed a CI/CD permissions issue silently blocking production deployments and shipped a workaround with zero downtime",
+      "Ran a merge-master-first workflow before every PR across two developers shipping in parallel against production, with zero post-merge conflicts",
+    ],
+    stack: ["Python", "Next.js 16", "Supabase", "Razorpay", "Resend", "Vercel"],
+    outcome:
+      "Live in production with three payment-gated product surfaces, ₹399–999 pricing. Automated English and Hindi report delivery with zero manual intervention. DNS fully verified for inbox deliverability. Indexed via Google Search Console. Zero downtime caused by my changes across the full build.",
+    proof: [
+      { label: "Live product", href: "https://theastroverse.in" },
+      { label: "Code on GitHub", href: "https://github.com/astro-verse-2709/astroverse" },
+    ],
+    status: "live",
+  },
 };
 
-export const workOrderByLens: Record<Lens, string[]> = {
-  ai: ["oraii", "siemens", "lkq"],
-  analyst: ["lkq", "oraii", "siemens"],
-};
+/**
+ * Single order, lead with ORAII (best validate-then-build story) then LKQ
+ * (hard commercial proof), then the RAG depth and the shipped pipeline.
+ */
+export const workOrder: string[] = ["oraii", "lkq", "siemens", "astroverse"];
 
 export type ExperienceEntry = {
   company: string;
@@ -173,7 +211,7 @@ export const experience: ExperienceEntry[] = [
     period: "2024 – present",
     bullets: [
       "Building a full-stack clinical AI platform during MSc: Next.js 15, Supabase, GPT-4o, Deepgram",
-      "Ran 25 therapist interviews; validated 20 of 25 hypotheses before writing a line of code",
+      "Contacted 25 private-practice therapists; validated the core problem through one in-depth structured interview before writing a line of code",
       "Shipped SOAP/DAP/GIRP/BIRP note generation, C-SSRS risk scoring, ICD-10/CPT billing, Hinglish speech support",
       "Directly inspired by AfterWard, a healthcare concept I helped validate on Edinburgh's Startup Fast Track 2025",
     ],
@@ -215,58 +253,85 @@ export const education = [
   },
 ];
 
+/**
+ * Skills mirror the three-part operating model (Validate · Build · Prove) so
+ * the same spine repeats across the site instead of a scattered tool dump.
+ */
 export const skillGroups = [
   {
-    title: "AI & Machine Learning",
+    title: "Validate — analytics & discovery",
+    items: [
+      "SQL",
+      "Power BI",
+      "Predictive Modelling",
+      "Data Envelopment Analysis",
+      "Simulation Modelling",
+      "User Research",
+      "Stakeholder Reviews",
+      "Excel · VBA",
+    ],
+  },
+  {
+    title: "Build — AI engineering",
     items: [
       "Python",
       "GPT-4o",
       "Llama 3",
-      "BERT",
-      "HuggingFace",
       "RAG Pipelines",
       "FAISS",
       "Prompt Engineering",
       "LangChain",
+      "Next.js · TypeScript",
+      "Supabase · PostgreSQL",
     ],
   },
   {
-    title: "Data & Analytics",
+    title: "Prove — impact & delivery",
     items: [
-      "SQL",
-      "Power BI",
-      "Advanced Excel",
-      "VBA",
-      "Predictive Modelling",
-      "XGBoost",
-      "Data Envelopment Analysis",
-      "Simulation Modelling",
-      "Linear Programming (PuLP)",
-    ],
-  },
-  {
-    title: "Product & Build",
-    items: [
-      "Next.js 15",
-      "TypeScript",
-      "React",
-      "Supabase",
-      "PostgreSQL",
-      "Docker",
-      "User Research",
-      "Go-to-Market",
-    ],
-  },
-  {
-    title: "Business & Ops",
-    items: [
-      "KPI Frameworks",
-      "Executive Reporting",
-      "Stakeholder Management",
-      "Supply Chain Analytics",
+      "Automated Validation",
+      "Model Evaluation",
       "Data Storytelling",
-      "Cross-Functional Collaboration",
+      "Executive Reporting",
+      "Deployment & CI/CD",
+      "Technical SEO",
+      "KPI Frameworks",
     ],
+  },
+];
+
+/**
+ * The overlap that defines the role. Each discipline (the Venn circle) maps to
+ * one action in the operating loop.
+ */
+export type OperatingPillar = {
+  num: string;
+  action: string;
+  discipline: string;
+  subtitle: string;
+  body: string;
+};
+
+export const operatingModel: OperatingPillar[] = [
+  {
+    num: "01",
+    action: "Validate",
+    discipline: "Data & Analytics",
+    subtitle: "Find the problem worth solving.",
+    body: "Two years turning fragmented data into decisions senior stakeholders across three markets acted on at LKQ, including $1.2M of dead inventory nobody had linked. The one therapist interview that cut two ORAII features before they cost a week of build. I prove the problem is real before anyone writes code.",
+  },
+  {
+    num: "02",
+    action: "Build",
+    discipline: "AI Engineering",
+    subtitle: "Ship the AI, not slideware.",
+    body: "GPT-4o clinical notes for ORAII, dual-source RAG on Llama 3 and FAISS for Siemens, an automated LLM-to-PDF pipeline for Astroverse. I prompt-engineer and ship to production, across transcription, generation, billing, and delivery, not just prototypes.",
+  },
+  {
+    num: "03",
+    action: "Prove",
+    discipline: "Product & Commercial",
+    subtitle: "Measure whether it worked.",
+    body: "60% fewer data errors from the validation pipelines I automated. A delivery layer that never drops a paid order. Features cut, not just shipped. I track the outcome and the commercial case, not just the launch.",
   },
 ];
 
