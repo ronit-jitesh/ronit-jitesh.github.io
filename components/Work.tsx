@@ -1,5 +1,6 @@
 import { caseStudies, workOrder } from "@/lib/content";
 import { Reveal } from "./Reveal";
+import { TiltCard } from "./TiltCard";
 
 const statusBadge = (status?: string) => {
   if (status === "live")
@@ -55,23 +56,25 @@ export function Work() {
                       isEven ? "lg:order-1" : "lg:order-2"
                     }`}
                   >
-                    <div className="surface relative aspect-[4/5] overflow-hidden">
-                      <MediaMock id={c.id} />
-                      <div className="absolute top-4 left-4 flex items-center gap-2">
-                        <span className="pill bg-[color:var(--bg)]">
-                          {c.id === "oraii"
-                            ? "ORAII"
-                            : c.id === "siemens"
-                            ? "Siemens"
-                            : c.id === "astroverse"
-                            ? "Astroverse"
-                            : "LKQ"}
-                        </span>
+                    <TiltCard>
+                      <div className="surface relative aspect-[4/5] overflow-hidden">
+                        <MediaMock id={c.id} />
+                        <div className="absolute top-4 left-4 flex items-center gap-2">
+                          <span className="pill bg-[color:var(--bg)]">
+                            {c.id === "oraii"
+                              ? "ORAII"
+                              : c.id === "siemens"
+                              ? "Siemens"
+                              : c.id === "astroverse"
+                              ? "Astroverse"
+                              : "LKQ"}
+                          </span>
+                        </div>
+                        <div className="absolute bottom-4 left-4">
+                          {statusBadge(c.status)}
+                        </div>
                       </div>
-                      <div className="absolute bottom-4 left-4">
-                        {statusBadge(c.status)}
-                      </div>
-                    </div>
+                    </TiltCard>
                   </div>
 
                   {/* Text side */}

@@ -1,4 +1,5 @@
 import { hero, profile } from "@/lib/content";
+import { Magnetic } from "./Magnetic";
 
 export function Hero() {
   return (
@@ -30,30 +31,36 @@ export function Hero() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center gap-3">
-          <a href="#work" className="btn btn-primary">
-            View work
-            <svg width="14" height="14" viewBox="0 0 14 14">
-              <path
-                d="M3 7h8M7 3l4 4-4 4"
-                stroke="currentColor"
-                strokeWidth="1.4"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </a>
-          <a
-            href={profile.calendly}
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-secondary"
-          >
-            Book a 20-min chat
-          </a>
-          <a href={profile.cv} download className="btn btn-secondary">
-            Download CV
-          </a>
+          <Magnetic>
+            <a href="#work" className="btn btn-primary">
+              View work
+              <svg width="14" height="14" viewBox="0 0 14 14">
+                <path
+                  d="M3 7h8M7 3l4 4-4 4"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a
+              href={profile.calendly}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-secondary"
+            >
+              Book a 20-min chat
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a href={profile.cv} download className="btn btn-secondary">
+              Download CV
+            </a>
+          </Magnetic>
         </div>
 
         {/* hairline with role labels */}
