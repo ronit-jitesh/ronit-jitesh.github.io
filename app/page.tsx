@@ -7,6 +7,7 @@ import { Hero } from "@/components/Hero";
 import { Nav } from "@/components/Nav";
 import { OperatingModel } from "@/components/OperatingModel";
 import { ProofStrip } from "@/components/ProofStrip";
+import { RecruiterChat } from "@/components/RecruiterChat";
 import { RecruiterGuide } from "@/components/RecruiterGuide";
 import { Skills } from "@/components/Skills";
 import { Work } from "@/components/Work";
@@ -28,6 +29,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <RecruiterChat />
     </>
   );
 }
