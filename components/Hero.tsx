@@ -1,13 +1,6 @@
-"use client";
-
-import { heroByLens, profile } from "@/lib/content";
-import { useLens } from "@/lib/lens";
-import { LensToggle } from "./LensToggle";
+import { hero, profile } from "@/lib/content";
 
 export function Hero() {
-  const { lens } = useLens();
-  const h = heroByLens[lens];
-
   return (
     <section
       id="top"
@@ -23,18 +16,16 @@ export function Hero() {
             </span>
             <span className="kicker">Available from Sept 2026 — UK</span>
           </div>
-          <div className="hidden md:block">
-            <LensToggle />
-          </div>
+          <span className="kicker hidden md:inline">AI Analyst · Edinburgh</span>
         </div>
 
-        <div key={lens} className="lens-fade">
+        <div>
           <h1 className="font-display text-[clamp(2.75rem,7vw,5.75rem)] leading-[1.02] tracking-tight max-w-[18ch]">
-            {h.display}
+            {hero.display}
           </h1>
 
           <p className="mt-8 max-w-2xl text-base md:text-lg text-[color:var(--ink-muted)] leading-relaxed">
-            {h.sub}
+            {hero.sub}
           </p>
         </div>
 
@@ -67,10 +58,10 @@ export function Hero() {
 
         {/* hairline with role labels */}
         <div className="mt-20 flex items-center gap-6 text-xs">
-          <span className="kicker whitespace-nowrap">Currently exploring</span>
+          <span className="kicker whitespace-nowrap">How I work</span>
           <div className="h-px flex-1 bg-[color:var(--border)]" />
           <span className="font-mono uppercase tracking-[0.14em] text-[11px] text-[color:var(--ink-muted)]">
-            AI · Analytics
+            Validate · Build · Prove
           </span>
         </div>
       </div>

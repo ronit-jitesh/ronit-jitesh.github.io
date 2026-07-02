@@ -69,9 +69,9 @@ export function About() {
                 something people will actually use.
               </p>
               <p className="text-[color:var(--ink)]">
-                I&apos;m based in Edinburgh and looking for UK roles in AI,
-                data product, and business analytics, combining analytical
-                rigour with hands-on building.
+                I&apos;m based in Edinburgh and looking for UK roles as an AI
+                analyst, and in applied AI and data products, where validating
+                the problem and building the solution are the same job.
               </p>
               <p className="text-[15px] text-[color:var(--ink-soft)]">
                 Right to work: Student visa through Jan 2027, then UK Graduate
