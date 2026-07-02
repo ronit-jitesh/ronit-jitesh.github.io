@@ -55,13 +55,13 @@ export type CaseStudy = {
 export const caseStudies: Record<string, CaseStudy> = {
   oraii: {
     id: "oraii",
-    tag: "AI Product · Co-Founder · In Development",
+    tag: "AI Product · Personal Project · In Development",
     title: "ORAII — Clinical Co-Pilot",
     oneLine:
       "25 therapists contacted, one interview, two features cut before they cost a week of build.",
     context:
       "Therapists spend 20–30 minutes after each session writing SOAP and DAP notes. I contacted 25 private-practice therapists; one in-depth structured interview, with a licensed practitioner, confirmed the problem was worth solving and specifically, that there was no compliant AI documentation tool built for mental health practitioners.",
-    role: "Co-founder. Owned product and engineering end-to-end: discovery, architecture, full-stack build, and go-to-market research.",
+    role: "Builder. Owned product and engineering end-to-end: discovery, architecture, full-stack build, and go-to-market research.",
     approach: [
       "Validated first: contacted 25 private-practice therapists and built on one in-depth structured interview with a licensed practitioner before writing a line of code",
       "Prompt-engineered GPT-4o to generate four clinical note formats (SOAP, DAP, GIRP, BIRP) and score C-SSRS risk directly from session transcripts",
@@ -224,7 +224,7 @@ export const experience: ExperienceEntry[] = [
       "Team project: a post-medical follow-up platform improving continuity of care between doctors and patients",
       "Ran problem–solution fit work, user interviews, and go-to-market testing during the University of Edinburgh / Edinburgh Innovations programme",
       "Won Most Viable Business, recognised for real-world applicability, problem–solution fit, and healthcare scalability",
-      "The experience directly led to ORAII, which I went on to co-found and build",
+      "The experience directly led to ORAII, which I went on to build",
     ],
   },
 ];

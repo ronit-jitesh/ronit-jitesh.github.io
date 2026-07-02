@@ -44,14 +44,14 @@ const NODES: Record<string, Node> = {
   ai: {
     label: "Show the AI builds",
     keywords: ["ai", "ml", "machine learning", "llm", "gpt", "model", "prompt", "build"],
-    text: "Three AI builds: ORAII (GPT-4o clinical documentation, co-founded), a Siemens dual-source RAG system (Llama 3 + FAISS), and Astroverse (a live, automated LLM-to-PDF pipeline).",
+    text: "Three AI builds: ORAII (GPT-4o clinical documentation), a Siemens dual-source RAG system (Llama 3 + FAISS), and Astroverse (a live, automated LLM-to-PDF pipeline).",
     chips: ["oraii", "siemens", "astroverse"],
     actions: [{ kind: "scroll", label: "Open the case studies", target: "work" }],
   },
   oraii: {
     label: "What's ORAII?",
     keywords: ["oraii", "clinical", "therap", "documentation", "soap", "note", "patient"],
-    text: "ORAII is an AI clinical-documentation platform for therapists, co-founded with Omana. Real-time transcription becomes SOAP/DAP/GIRP/BIRP notes via GPT-4o, with C-SSRS risk scoring, architected for UK-GDPR and India's DPDP Act.",
+    text: "ORAII is Ronit's flagship project: an AI clinical-documentation platform for therapists. Real-time transcription becomes SOAP/DAP/GIRP/BIRP notes via GPT-4o, with C-SSRS risk scoring, architected for UK-GDPR and India's DPDP Act.",
     chips: ["work"],
     actions: [
       { kind: "scroll", label: "ORAII case study", target: "work" },
