@@ -34,12 +34,11 @@ export function Work() {
         <Reveal>
           <div className="kicker mb-4">Featured Work</div>
           <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-[1.05] max-w-[18ch]">
-            Four projects that prove the rest.
+            Data. Models. Products.
           </h2>
           <p className="mt-6 max-w-2xl text-[color:var(--ink-muted)]">
-            Each case study follows the same arc: validate the problem, build
-            the AI, prove it worked. Context, what I decided, what I shipped,
-            and what it changed.
+            Three case studies, one arc: find the signal in the data, build
+            the model, ship it as a product and prove it worked.
           </p>
         </Reveal>
 
@@ -184,6 +183,43 @@ export function Work() {
             );
           })}
         </div>
+
+        {/* Building advantage, kept slim: Astroverse stays visible without
+            diluting the data/ML focus of the featured list. */}
+        <Reveal delay={80}>
+          <div className="mt-20 md:mt-24 surface p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
+            <div className="shrink-0 flex items-center gap-3">
+              {statusBadge("live")}
+              <span className="kicker">Also in production</span>
+            </div>
+            <p className="flex-1 text-[15px] text-[color:var(--ink-muted)] leading-relaxed">
+              <span className="font-display text-[17px] text-[color:var(--ink)]">
+                Astroverse
+              </span>{" "}
+              — co-founded consumer product. A payment becomes a typeset,
+              bilingual PDF in minutes with zero manual intervention; I own
+              the pipeline, deliverability, CI/CD, and technical SEO.
+            </p>
+            <div className="shrink-0 flex flex-wrap gap-x-5 gap-y-2">
+              <a
+                href="https://theastroverse.in"
+                target="_blank"
+                rel="noreferrer"
+                className="text-xs font-mono uppercase tracking-[0.12em] text-[color:var(--ink-soft)] hover:text-[color:var(--accent)] transition-colors"
+              >
+                Live product ↗
+              </a>
+              <a
+                href="https://github.com/astro-verse-2709/astroverse"
+                target="_blank"
+                rel="noreferrer"
+                className="text-xs font-mono uppercase tracking-[0.12em] text-[color:var(--ink-soft)] hover:text-[color:var(--accent)] transition-colors"
+              >
+                Code ↗
+              </a>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

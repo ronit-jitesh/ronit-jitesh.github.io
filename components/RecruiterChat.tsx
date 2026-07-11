@@ -31,22 +31,52 @@ const NODES: Record<string, Node> = {
   roles: {
     label: "What roles?",
     keywords: ["role", "hiring", "looking for", "position", "fit", "suitable", "job"],
-    text: "Ronit is targeting AI Analyst, applied AI, and data-product roles in the UK. The through-line: validate the problem with data, then build the AI that solves it, then prove it worked.",
-    chips: ["overlap", "proof", "ai"],
+    text: "Ronit is targeting AI analyst, data analyst, data science, and applied AI roles in the UK. The through-line: turn data into models, and models into products people use.",
+    chips: ["overlap", "proof", "models"],
   },
   proof: {
     label: "Strongest proof?",
     keywords: ["proof", "number", "metric", "impact", "result", "achieve", "1.2", "money"],
-    text: "The headline numbers: $1.2M of underperforming inventory surfaced at LKQ, 25 therapists contacted (one in-depth interview) shaping ORAII, and 4 AI/data products built end-to-end — one live in production (Astroverse).",
-    chips: ["lkq", "work"],
+    text: "The headline numbers: $1.2M of underperforming inventory surfaced at LKQ, 90%+ accuracy from a BERT + GPT-4o hybrid classifier (group coursework), and 4 AI/data products built end-to-end — one live in production (Astroverse).",
+    chips: ["lkq", "models", "work"],
     actions: [{ kind: "scroll", label: "See the numbers", target: "proof" }],
   },
   ai: {
     label: "Show the AI builds",
-    keywords: ["ai", "ml", "machine learning", "llm", "gpt", "model", "prompt", "build"],
-    text: "Three AI builds: ORAII (GPT-4o clinical documentation), a Siemens dual-source RAG system (Llama 3 + FAISS), and Astroverse (a live, automated LLM-to-PDF pipeline).",
-    chips: ["oraii", "siemens", "astroverse"],
+    keywords: ["ai", "llm", "gpt", "prompt", "build"],
+    text: "Three AI builds: ORAII (GPT-4o clinical documentation), a Siemens dual-source RAG system (Llama 3 + FAISS), and Astroverse (a live, automated LLM-to-PDF pipeline) — plus a model bench of classical ML work.",
+    chips: ["oraii", "siemens", "models"],
     actions: [{ kind: "scroll", label: "Open the case studies", target: "work" }],
+  },
+  models: {
+    label: "Classical ML & stats",
+    keywords: [
+      "ml",
+      "machine learning",
+      "model",
+      "classifier",
+      "xgboost",
+      "scikit",
+      "churn",
+      "loan",
+      "default",
+      "regression",
+      "statistics",
+      "dea",
+      "data science",
+      "scientist",
+      "nli",
+      "bench",
+    ],
+    text: "Beyond the LLM work there's a model bench: a BERT + GPT-4o hybrid NLI classifier at 90%+ accuracy (group coursework), XGBoost loan-default prediction, customer-churn analysis, and UK banking efficiency via DEA — each framed as business question, method, measured result.",
+    chips: ["rent", "work"],
+    actions: [{ kind: "scroll", label: "See the model bench", target: "models" }],
+  },
+  rent: {
+    label: "Rent-value engine",
+    keywords: ["rent", "london", "valuation", "quantile", "conformal", "housing", "property"],
+    text: "In development: a London rent-valuation engine. ONS percentile distributions as ground truth, quantile models with conformally calibrated intervals, leave-borough-out spatial cross-validation — and deliberately no LLM in the valuation path.",
+    chips: ["models", "work"],
   },
   oraii: {
     label: "What's ORAII?",
@@ -112,14 +142,14 @@ const NODES: Record<string, Node> = {
   work: {
     label: "See all work",
     keywords: ["work", "project", "portfolio", "case study", "case studies"],
-    text: "Four case studies, each following the same arc — validate, build, prove: ORAII, LKQ, Siemens, and Astroverse.",
+    text: "Three case studies — LKQ, Siemens RAG, and ORAII — following one arc: data, models, products. Plus a model bench of classical ML projects, and Astroverse live in production.",
     actions: [{ kind: "scroll", label: "Open the work", target: "work" }],
   },
 };
 
 const GREETING =
   "Hi — I'm Ronit's portfolio guide. Ask me anything, or pick a starting point:";
-const START_CHIPS = ["roles", "proof", "ai", "eligibility", "chat"];
+const START_CHIPS = ["roles", "proof", "models", "eligibility", "chat"];
 const FALLBACK =
   "I can point you to the right place. Try one of these, or ask about his projects, the numbers, or UK eligibility:";
 
