@@ -17,7 +17,9 @@ export function Hero() {
             </span>
             <span className="kicker">Available from Sept 2026 — UK</span>
           </div>
-          <span className="kicker hidden md:inline">AI Analyst · Edinburgh</span>
+          <span className="kicker hidden md:inline">
+            AI &amp; Data Analyst · Edinburgh
+          </span>
         </div>
 
         <div>

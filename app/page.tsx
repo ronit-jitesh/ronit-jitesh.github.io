@@ -4,6 +4,7 @@ import { Education } from "@/components/Education";
 import { Experience } from "@/components/Experience";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
+import { ModelBench } from "@/components/ModelBench";
 import { Nav } from "@/components/Nav";
 import { OperatingModel } from "@/components/OperatingModel";
 import { ProofStrip } from "@/components/ProofStrip";
@@ -22,6 +23,7 @@ export default function Home() {
         <ProofStrip />
         <OperatingModel />
         <Work />
+        <ModelBench />
         <About />
         <Experience />
         <Education />

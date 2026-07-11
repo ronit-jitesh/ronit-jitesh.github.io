@@ -7,9 +7,8 @@ export type Metric = { value: string; label: string };
  * that solves it, then measures whether it worked.
  */
 export const hero: { display: string; sub: string } = {
-  display:
-    "I validate the problem with data, then build the AI that solves it.",
-  sub: "AI analyst with two years of commercial analytics at LKQ across US, Canada, and EU markets, now finishing an MSc Business Analytics at Edinburgh. I use that instinct for what the data actually says to build AI products people rely on: ORAII (clinical documentation for therapists), a live automated report pipeline, and a dual-source RAG system with Siemens. I find the problem worth solving, then ship the thing.",
+  display: "I turn data into models, and models into products people use.",
+  sub: "AI and data analyst: MSc Business Analytics at Edinburgh — predictive and prescriptive modelling, simulation, data envelopment analysis — on top of two years of commercial analytics at LKQ across US, Canada, and EU markets. And the models ship: a dual-source RAG system with Siemens Digital Industries, GPT-4o clinical documentation in ORAII, and a calibrated London rent-valuation engine in development.",
 };
 
 export const metrics: [Metric, Metric, Metric] = [
@@ -19,9 +18,9 @@ export const metrics: [Metric, Metric, Metric] = [
       "in underperforming inventory surfaced at LKQ, by joining data nobody had linked",
   },
   {
-    value: "25 → 1",
+    value: "90%+",
     label:
-      "therapists contacted; one in-depth interview cut two features before they cost a week of build",
+      "accuracy from a BERT + GPT-4o hybrid NLI classifier with confidence-based routing (group coursework, MSc)",
   },
   {
     value: "4",
@@ -170,10 +169,63 @@ export const caseStudies: Record<string, CaseStudy> = {
 };
 
 /**
- * Single order, lead with ORAII (best validate-then-build story) then LKQ
- * (hard commercial proof), then the RAG depth and the shipped pipeline.
+ * Order mirrors the hero arc — data (LKQ) → models (Siemens) → products
+ * (ORAII). Astroverse is deliberately out of the featured list: it renders as
+ * a slim "also live in production" strip so the building advantage stays
+ * visible without diluting the data/ML focus.
  */
-export const workOrder: string[] = ["oraii", "lkq", "siemens", "astroverse"];
+export const workOrder: string[] = ["lkq", "siemens", "oraii"];
+
+export type ModelBenchItem = {
+  title: string;
+  tag: string;
+  question: string;
+  method: string;
+  result?: string;
+  href?: string;
+};
+
+/**
+ * Classical ML and statistics evidence. Rules: real business question, real
+ * method, and only measured results — no invented metrics. Items without a
+ * recorded number state the method and stop there.
+ */
+export const modelBench: ModelBenchItem[] = [
+  {
+    title: "Adaptive NLI classifier",
+    tag: "Group coursework · MSc",
+    question:
+      "Can routing each input to the right model beat any single model?",
+    method:
+      "BERT + GPT-4o hybrid with confidence-based routing: the fast local model answers where it is confident, the LLM handles the ambiguous rest.",
+    result: "90%+ accuracy at inference",
+    href: "https://github.com/ronit-jitesh/Group_6-LLM-NLI",
+  },
+  {
+    title: "Bank loan default prediction",
+    tag: "Academic project · MSc",
+    question:
+      "Which applicants are likely to default, and where should the risk threshold sit?",
+    method:
+      "XGBoost ensemble on financial and behavioural features, tuned for the precision–recall trade-off; outputs framed as decision thresholds, not raw scores.",
+  },
+  {
+    title: "Customer churn & loyalty",
+    tag: "Academic project · MSc",
+    question: "Who is about to churn, and what actually drives it?",
+    method:
+      "Churn-driver analysis on transactional and behavioural data; high-risk segmentation translated into retention recommendations.",
+  },
+  {
+    title: "UK banking efficiency",
+    tag: "Academic project · MSc",
+    question:
+      "Which UK banks convert inputs to outputs most efficiently, and by what margin?",
+    method:
+      "Data Envelopment Analysis in Python, benchmarking bank efficiency frontiers across input–output combinations.",
+    href: "https://github.com/ronit-jitesh/DEA_Assignment",
+  },
+];
 
 export type ExperienceEntry = {
   company: string;
@@ -259,26 +311,28 @@ export const education = [
  */
 export const skillGroups = [
   {
-    title: "Validate — analytics & discovery",
+    title: "Validate — data & statistics",
     items: [
       "SQL",
-      "Power BI",
-      "Predictive Modelling",
-      "Data Envelopment Analysis",
+      "Python · pandas · NumPy",
+      "Exploratory Data Analysis",
+      "Hypothesis Testing",
+      "A/B Testing & Experiment Design",
       "Simulation Modelling",
-      "User Research",
-      "Stakeholder Reviews",
+      "Data Envelopment Analysis",
+      "Power BI",
       "Excel · VBA",
     ],
   },
   {
-    title: "Build — AI engineering",
+    title: "Build — machine learning & AI",
     items: [
-      "Python",
+      "scikit-learn",
+      "XGBoost",
+      "Quantile Regression · Conformal Prediction",
       "GPT-4o",
       "Llama 3",
-      "RAG Pipelines",
-      "FAISS",
+      "RAG Pipelines · FAISS",
       "Prompt Engineering",
       "LangChain",
       "Next.js · TypeScript",
@@ -288,13 +342,13 @@ export const skillGroups = [
   {
     title: "Prove — impact & delivery",
     items: [
+      "Model Evaluation (ROC-AUC · Precision/Recall)",
       "Automated Validation",
-      "Model Evaluation",
       "Data Storytelling",
       "Executive Reporting",
+      "KPI Frameworks",
       "Deployment & CI/CD",
       "Technical SEO",
-      "KPI Frameworks",
     ],
   },
 ];
