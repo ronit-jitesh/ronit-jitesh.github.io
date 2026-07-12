@@ -274,10 +274,10 @@ function MediaMock({ id }: { id: string }) {
         <div className="absolute inset-0 opacity-30 [background-image:radial-gradient(rgba(255,255,255,.35)_1px,transparent_1px)] [background-size:18px_18px]" />
         <div className="absolute inset-6 text-[#cfe0ff] font-mono text-[11px] leading-5">
           <div className="opacity-60">&gt; query: VFD trips on overcurrent after restart</div>
-          <div className="mt-3 opacity-90">retrieving · manuals  █████░░░ 62%</div>
-          <div className="opacity-90">retrieving · repair_logs ███████ 94%</div>
+          <div className="mt-3 opacity-90">retrieving · dense (MiniLM) █████░░░ 62%</div>
+          <div className="opacity-90">retrieving · BM25 ███████ 94%</div>
           <div className="mt-4 text-[#a8cbff]">
-            fused context → Llama 3
+            fused via RRF → fault ID
           </div>
           <div className="mt-3 p-3 rounded border border-[#284078] bg-[#132248]/60">
             Likely cause: DC-bus capacitor drift. Cross-ref: 12 historical
@@ -285,7 +285,7 @@ function MediaMock({ id }: { id: string }) {
           </div>
         </div>
         <div className="absolute bottom-4 right-4 font-mono text-[10px] text-[#7896c9] uppercase tracking-widest">
-          FAISS · Dual-Source RAG
+          Hybrid Retrieval · RRF
         </div>
       </div>
     );
