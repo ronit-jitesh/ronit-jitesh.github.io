@@ -3,12 +3,12 @@ export type Metric = { value: string; label: string };
 /**
  * Single, unified positioning. The old two-lens (AI vs Analyst) toggle was
  * removed deliberately: it signalled two identities. Everything now serves one
- * story — an AI analyst who validates the problem with data, then builds the AI
+ * story: an AI analyst who validates the problem with data, then builds the AI
  * that solves it, then measures whether it worked.
  */
 export const hero: { display: string; sub: string } = {
   display: "I turn data into models, and models into products people use.",
-  sub: "AI and data analyst: MSc Business Analytics at Edinburgh — predictive and prescriptive modelling, simulation, data envelopment analysis — on top of two years of commercial analytics at LKQ across US, Canada, and EU markets. And the models ship: a hybrid-retrieval fault-ID system with Siemens Digital Industries, GPT-4o clinical documentation in ORAII, and a calibrated London rent-valuation engine in development.",
+  sub: "AI and data analyst: MSc Business Analytics at Edinburgh (predictive and prescriptive modelling, simulation, data envelopment analysis), on top of two years of commercial analytics at LKQ across US, Canada, and EU markets. And the models ship: a hybrid-retrieval fault-ID system with Siemens Digital Industries, GPT-4o clinical documentation in ORAII, and a calibrated London rent-valuation engine in development.",
 };
 
 export const metrics: [Metric, Metric, Metric] = [
@@ -55,7 +55,7 @@ export const caseStudies: Record<string, CaseStudy> = {
   oraii: {
     id: "oraii",
     tag: "AI Product · Personal Project · In Development",
-    title: "ORAII — Clinical Co-Pilot",
+    title: "ORAII: Clinical Co-Pilot",
     oneLine:
       "25 therapists contacted, one interview, two features cut before they cost a week of build.",
     context:
@@ -88,12 +88,12 @@ export const caseStudies: Record<string, CaseStudy> = {
   lkq: {
     id: "lkq",
     tag: "BI · 2 Years Industry · EURO CAR PARTS Group",
-    title: "LKQ — Commercial Analytics at Scale",
+    title: "LKQ: Commercial Analytics at Scale",
     oneLine:
       "$1.2M of dead inventory, surfaced from data nobody had joined.",
     context:
       "LKQ India's category performance data was fragmented across teams, with no single view linking inventory health to sales outcomes. Senior business owners made weekly decisions on incomplete data.",
-    role: "Product Master Data Analyst I — Business Intelligence & Analytics. Partnered with BI, product, and supply chain across US, Canada, and EU portfolios.",
+    role: "Product Master Data Analyst I, Business Intelligence & Analytics. Partnered with BI, product, and supply chain across US, Canada, and EU portfolios.",
     approach: [
       "Designed Power BI dashboards backed by SQL models linking operational outputs to commercial KPIs",
       "Built automated Python and SQL validation scripts, reducing error rates by 60%",
@@ -134,8 +134,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     outcome:
       "Retrieval core complete and evaluated; the fault-identification engine is next. Dissertation submission Aug 2026, with full results published on completion.",
     proof: [
-      { label: "Private repo — Siemens data confidentiality" },
-      { label: "Companion POC — SOP migration", href: "https://github.com/ronit-jitesh/Document-Migration" },
+      { label: "Private repo, Siemens data confidentiality" },
+      { label: "Companion POC: SOP migration", href: "https://github.com/ronit-jitesh/Document-Migration" },
       { label: "Architecture diagram" },
     ],
     status: "in-progress",
@@ -143,7 +143,7 @@ export const caseStudies: Record<string, CaseStudy> = {
   astroverse: {
     id: "astroverse",
     tag: "Live Product · Co-Founder · Production Pipeline",
-    title: "Astroverse — Automated Delivery Pipeline",
+    title: "Astroverse: Automated Delivery Pipeline",
     oneLine:
       "Payment to typeset PDF in minutes, with zero humans in the loop.",
     context:
@@ -151,7 +151,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     role: "Co-founder. Owned the layer between the product and the customer: post-purchase pipeline, production infrastructure, deployment process, and technical SEO, across a live, revenue-generating product shipped alongside a second developer.",
     approach: [
       "Built the Python worker pipeline: polls Supabase for new submissions, runs LLM-assisted analysis, executes a notebook, renders LaTeX to PDF, uploads to storage, updates status",
-      "Designed the delivery layer to never throw — a transient email failure can't roll back a paid, already-generated report. Every failure path is handled, including failures while logging the failure",
+      "Designed the delivery layer to never throw. A transient email failure can't roll back a paid, already-generated report. Every failure path is handled, including failures while logging the failure",
       "Integrated transactional email over verified DNS (SPF, DKIM, DMARC) from a custom domain, with delivery language matched automatically to the report language",
       "Shipped the technical SEO foundation from zero: dynamic sitemap and robots.txt, Open Graph and JSON-LD structured data, indexed and verified through Google Search Console",
       "Diagnosed a CI/CD permissions issue silently blocking production deployments and shipped a workaround with zero downtime",
@@ -169,7 +169,7 @@ export const caseStudies: Record<string, CaseStudy> = {
 };
 
 /**
- * Order mirrors the hero arc — data (LKQ) → models (Siemens) → products
+ * Order mirrors the hero arc: data (LKQ), models (Siemens), products
  * (ORAII). Astroverse is deliberately out of the featured list: it renders as
  * a slim "also live in production" strip so the building advantage stays
  * visible without diluting the data/ML focus.
@@ -187,7 +187,7 @@ export type ModelBenchItem = {
 
 /**
  * Classical ML and statistics evidence. Rules: real business question, real
- * method, and only measured results — no invented metrics. Items without a
+ * method, and only measured results. No invented metrics. Items without a
  * recorded number state the method and stop there.
  */
 export const modelBench: ModelBenchItem[] = [
@@ -195,11 +195,11 @@ export const modelBench: ModelBenchItem[] = [
     title: "World Cup 2026 forecast",
     tag: "Personal project · Dixon-Coles + Monte Carlo",
     question:
-      "Who wins the World Cup — and does the model actually beat picking the favourite?",
+      "Who wins the World Cup, and does the model actually beat picking the favourite?",
     method:
       "Dixon-Coles adjusted Poisson goals model wrapped in a 100,000-run Monte Carlo simulation of the full knockout bracket. Backtested on the already-played Round of 32 using only pre-tournament ratings, no hindsight, then scored with RPS, Brier score, and log loss against baselines, with a bootstrap confidence interval on the gap.",
     result:
-      "87% favourite hit-rate (13/15) — but on RPS the model does not beat picking the favourite (0.177 vs 0.133), and the 95% CI on that gap crosses zero. Reported as the headline finding, not buried.",
+      "87% favourite hit-rate (13/15), but on RPS the model does not beat picking the favourite (0.177 vs 0.133), and the 95% CI on that gap crosses zero. Reported as the headline finding, not buried.",
     href: "https://github.com/ronit-jitesh/worldcup-2026-forecast",
   },
   {
@@ -248,8 +248,8 @@ export type ExperienceEntry = {
 
 export const experience: ExperienceEntry[] = [
   {
-    company: "LKQ India Private Limited — EURO CAR PARTS Group",
-    role: "Product Master Data Analyst I — BI & Analytics",
+    company: "LKQ India Private Limited (EURO CAR PARTS Group)",
+    role: "Product Master Data Analyst I, BI & Analytics",
     period: "Sep 2024 – Aug 2025",
     bullets: [
       "Built executive Power BI dashboards across 16+ product categories, adopted by three business units",
@@ -259,8 +259,8 @@ export const experience: ExperienceEntry[] = [
     ],
   },
   {
-    company: "LKQ India Private Limited — EURO CAR PARTS Group",
-    role: "Data Analyst Apprentice — Data Quality & Analytics",
+    company: "LKQ India Private Limited (EURO CAR PARTS Group)",
+    role: "Data Analyst Apprentice, Data Quality & Analytics",
     period: "Sep 2023 – Sep 2024",
     bullets: [
       "Designed automated Python and SQL quality-check scripts; reduced error rates by 60%",
@@ -269,7 +269,7 @@ export const experience: ExperienceEntry[] = [
     ],
   },
   {
-    company: "ORAII — Clinical AI Platform",
+    company: "ORAII: Clinical AI Platform",
     role: "Builder",
     period: "2024 – present",
     bullets: [
@@ -280,7 +280,7 @@ export const experience: ExperienceEntry[] = [
     ],
   },
   {
-    company: "AfterWard — Edinburgh Startup Fast Track 2025",
+    company: "AfterWard: Edinburgh Startup Fast Track 2025",
     role: "Team member · Concept validation",
     period: "Nov 2025",
     bullets: [
@@ -322,7 +322,7 @@ export const education = [
  */
 export const skillGroups = [
   {
-    title: "Validate — data & statistics",
+    title: "Validate: data & statistics",
     items: [
       "SQL",
       "Python · pandas · NumPy",
@@ -336,7 +336,7 @@ export const skillGroups = [
     ],
   },
   {
-    title: "Build — machine learning & AI",
+    title: "Build: machine learning & AI",
     items: [
       "scikit-learn",
       "XGBoost",
@@ -351,7 +351,7 @@ export const skillGroups = [
     ],
   },
   {
-    title: "Prove — impact & delivery",
+    title: "Prove: impact & delivery",
     items: [
       "Model Evaluation (ROC-AUC · Precision/Recall)",
       "Automated Validation",
