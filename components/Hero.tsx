@@ -15,7 +15,7 @@ export function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-70" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-green-600" />
             </span>
-            <span className="kicker">Available from Sept 2026 — UK</span>
+            <span className="kicker">Available from Sept 2026, UK</span>
           </div>
           <span className="kicker hidden md:inline">
             AI &amp; Data Analyst · Edinburgh
