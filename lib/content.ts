@@ -8,7 +8,7 @@ export type Metric = { value: string; label: string };
  */
 export const hero: { display: string; sub: string } = {
   display: "I turn data into models, and models into products people use.",
-  sub: "AI and data analyst: MSc Business Analytics at Edinburgh — predictive and prescriptive modelling, simulation, data envelopment analysis — on top of two years of commercial analytics at LKQ across US, Canada, and EU markets. And the models ship: a dual-source RAG system with Siemens Digital Industries, GPT-4o clinical documentation in ORAII, and a calibrated London rent-valuation engine in development.",
+  sub: "AI and data analyst: MSc Business Analytics at Edinburgh — predictive and prescriptive modelling, simulation, data envelopment analysis — on top of two years of commercial analytics at LKQ across US, Canada, and EU markets. And the models ship: a hybrid-retrieval fault-ID system with Siemens Digital Industries, GPT-4o clinical documentation in ORAII, and a calibrated London rent-valuation engine in development.",
 };
 
 export const metrics: [Metric, Metric, Metric] = [
@@ -117,24 +117,24 @@ export const caseStudies: Record<string, CaseStudy> = {
   },
   siemens: {
     id: "siemens",
-    tag: "RAG · MSc Dissertation · Siemens Digital Industries",
-    title: "Siemens Industrial Repair Companion",
+    tag: "Retrieval & Fault ID · MSc Dissertation · Siemens Digital Industries",
+    title: "Siemens Repair Companion",
     oneLine:
-      "Manuals plus repair logs, fused into a five-second answer, on-prem.",
+      "Given a failed drive-unit test, find the likely fault and show the evidence.",
     context:
-      "Siemens engineers spend hours searching across technical manuals and historical repair logs to diagnose variable-frequency drive faults. Neither source alone answers the question. You need both.",
+      "When a Siemens drive unit fails its functional test, engineers need to identify the likely cause, process, component, or tester, and back that judgement with evidence from historical repair records. No single source settles the question on its own.",
     role: "Sole builder. Academic partner: Siemens Digital Industries.",
     approach: [
-      "Dual-source retrieval: separate FAISS indices for manuals and repair logs, weighted fusion at query time",
-      "Llama 3 for generation, deployable on-prem. No data leaves the engineer's machine",
-      "Streamlit evaluation UI for Siemens engineer feedback, Docker for reproducibility",
-      "Evaluation planned against live field cases from Siemens CSD",
+      "Built and independently audited a clean, matched test-to-repair dataset before any modelling began",
+      "Validated a 3-class fault taxonomy against the domain, then built the retrieval corpus from repair records",
+      "Built a hybrid retrieval core, dense embeddings plus BM25, fused with Reciprocal Rank Fusion, benchmarked against a reranker and kept the simpler pipeline once it won on the evaluation set",
+      "Logged every non-obvious decision as an ADR: taxonomy, evaluation split, retrieval architecture, so the dissertation is defensible, not just narrated",
     ],
-    stack: ["Python", "FAISS", "Llama 3", "Streamlit", "Docker", "LangChain"],
+    stack: ["Python", "Dense Retrieval (MiniLM)", "BM25", "Reciprocal Rank Fusion", "Evaluation Design"],
     outcome:
-      "Dissertation in progress, submission Aug 2026. Benchmark results published on completion. Flagged during a Siemens review as the strongest retrieval approach in the cohort to date.",
+      "Retrieval core complete and evaluated; the fault-identification engine is next. Dissertation submission Aug 2026, with full results published on completion.",
     proof: [
-      { label: "Code on GitHub", href: "https://github.com/ronit-jitesh/Industrial-Repair-Companion" },
+      { label: "Private repo — Siemens data confidentiality" },
       { label: "Companion POC — SOP migration", href: "https://github.com/ronit-jitesh/Document-Migration" },
       { label: "Architecture diagram" },
     ],
@@ -191,6 +191,17 @@ export type ModelBenchItem = {
  * recorded number state the method and stop there.
  */
 export const modelBench: ModelBenchItem[] = [
+  {
+    title: "World Cup 2026 forecast",
+    tag: "Personal project · Dixon-Coles + Monte Carlo",
+    question:
+      "Who wins the World Cup — and does the model actually beat picking the favourite?",
+    method:
+      "Dixon-Coles adjusted Poisson goals model wrapped in a 100,000-run Monte Carlo simulation of the full knockout bracket. Backtested on the already-played Round of 32 using only pre-tournament ratings, no hindsight, then scored with RPS, Brier score, and log loss against baselines, with a bootstrap confidence interval on the gap.",
+    result:
+      "87% favourite hit-rate (13/15) — but on RPS the model does not beat picking the favourite (0.177 vs 0.133), and the 95% CI on that gap crosses zero. Reported as the headline finding, not buried.",
+    href: "https://github.com/ronit-jitesh/worldcup-2026-forecast",
+  },
   {
     title: "Adaptive NLI classifier",
     tag: "Group coursework · MSc",
@@ -289,7 +300,7 @@ export const education = [
     detail:
       "Predictive & Prescriptive Analytics · Simulation Modelling · Data Envelopment Analysis · Mathematical & Stochastic Programming",
     extras: [
-      "Dissertation: Industrial Repair Companion Chatbot (Dual-Source RAG), Siemens Digital Industries",
+      "Dissertation: Siemens Repair Companion (hybrid retrieval + fault identification), Siemens Digital Industries",
       "Social Representative, Edinburgh Business School",
       "Most Viable Business, Edinburgh Startup Fast Track 2025, awarded to AfterWard (team project that inspired ORAII)",
     ],
@@ -378,7 +389,7 @@ export const operatingModel: OperatingPillar[] = [
     action: "Build",
     discipline: "AI Engineering",
     subtitle: "Ship the AI, not slideware.",
-    body: "GPT-4o clinical notes for ORAII, dual-source RAG on Llama 3 and FAISS for Siemens, an automated LLM-to-PDF pipeline for Astroverse. I prompt-engineer and ship to production, across transcription, generation, billing, and delivery, not just prototypes.",
+    body: "GPT-4o clinical notes for ORAII, hybrid dense-and-BM25 retrieval for Siemens, an automated LLM-to-PDF pipeline for Astroverse. I prompt-engineer and ship to production, across transcription, generation, billing, and delivery, not just prototypes.",
   },
   {
     num: "03",
