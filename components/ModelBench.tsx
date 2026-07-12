@@ -4,7 +4,7 @@ import { Reveal } from "./Reveal";
 /**
  * Classical ML and statistics evidence, kept deliberately terse: business
  * question → method → measured result. Cards without a recorded metric show
- * the method and stop — no invented numbers.
+ * the method and stop. No invented numbers.
  */
 export function ModelBench() {
   return (
