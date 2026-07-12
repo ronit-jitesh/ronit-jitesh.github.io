@@ -2,7 +2,7 @@ import { operatingModel, positioningStatement } from "@/lib/content";
 import { Reveal } from "./Reveal";
 import { VennDiagram } from "./VennDiagram";
 
-/** Colour per discipline / pillar — ties each Venn disc to its card. */
+/** Colour per discipline / pillar, ties each Venn disc to its card. */
 const RING = ["var(--accent)", "var(--gold)", "var(--ink-muted)"];
 
 export function OperatingModel() {
