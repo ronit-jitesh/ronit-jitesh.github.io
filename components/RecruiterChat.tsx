@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { profile } from "@/lib/content";
 
 /**
- * Recruiter concierge — a rule-based chat assistant.
+ * Recruiter concierge: a rule-based chat assistant.
  *
  * This is deliberately NOT an LLM: the site is a static export, so there is no
  * safe place for an API key, and a scripted assistant can only surface facts
@@ -37,14 +37,14 @@ const NODES: Record<string, Node> = {
   proof: {
     label: "Strongest proof?",
     keywords: ["proof", "number", "metric", "impact", "result", "achieve", "1.2", "money"],
-    text: "The headline numbers: $1.2M of underperforming inventory surfaced at LKQ, 90%+ accuracy from a BERT + GPT-4o hybrid classifier (group coursework), and 4 AI/data products built end-to-end — one live in production (Astroverse).",
+    text: "The headline numbers: $1.2M of underperforming inventory surfaced at LKQ, 90%+ accuracy from a BERT + GPT-4o hybrid classifier (group coursework), and 4 AI/data products built end-to-end, one live in production (Astroverse).",
     chips: ["lkq", "models", "work"],
     actions: [{ kind: "scroll", label: "See the numbers", target: "proof" }],
   },
   ai: {
     label: "Show the AI builds",
     keywords: ["ai", "llm", "gpt", "prompt", "build"],
-    text: "Three AI builds: ORAII (GPT-4o clinical documentation), a Siemens hybrid-retrieval fault-ID system, and Astroverse (a live, automated LLM-to-PDF pipeline) — plus a model bench of classical ML work.",
+    text: "Three AI builds: ORAII (GPT-4o clinical documentation), a Siemens hybrid-retrieval fault-ID system, and Astroverse (a live, automated LLM-to-PDF pipeline). Plus a model bench of classical ML work.",
     chips: ["oraii", "siemens", "models"],
     actions: [{ kind: "scroll", label: "Open the case studies", target: "work" }],
   },
@@ -74,14 +74,14 @@ const NODES: Record<string, Node> = {
       "poisson",
       "monte carlo",
     ],
-    text: "Beyond the LLM work there's a model bench: a Dixon-Coles + Monte Carlo World Cup forecast (backtested, and honestly reported when it does not beat the naive baseline), a BERT + GPT-4o hybrid NLI classifier at 90%+ accuracy (group coursework), XGBoost loan-default prediction, customer-churn analysis, and UK banking efficiency via DEA — each framed as business question, method, measured result.",
+    text: "Beyond the LLM work there's a model bench: a Dixon-Coles + Monte Carlo World Cup forecast (backtested, and honestly reported when it does not beat the naive baseline), a BERT + GPT-4o hybrid NLI classifier at 90%+ accuracy (group coursework), XGBoost loan-default prediction, customer-churn analysis, and UK banking efficiency via DEA. Each framed as business question, method, measured result.",
     chips: ["rent", "work"],
     actions: [{ kind: "scroll", label: "See the model bench", target: "models" }],
   },
   rent: {
     label: "Rent-value engine",
     keywords: ["rent", "london", "valuation", "quantile", "conformal", "housing", "property"],
-    text: "In development: a London rent-valuation engine. ONS percentile distributions as ground truth, quantile models with conformally calibrated intervals, leave-borough-out spatial cross-validation — and deliberately no LLM in the valuation path.",
+    text: "In development: a London rent-valuation engine. ONS percentile distributions as ground truth, quantile models with conformally calibrated intervals, leave-borough-out spatial cross-validation, and deliberately no LLM in the valuation path.",
     chips: ["models", "work"],
   },
   oraii: {
@@ -97,7 +97,7 @@ const NODES: Record<string, Node> = {
   siemens: {
     label: "The Siemens work",
     keywords: ["siemens", "rag", "retrieval", "dissertation", "repair", "industrial", "faiss", "llama", "fault"],
-    text: "Ronit's MSc dissertation with Siemens Digital Industries: given a failed drive-unit test, find the likely fault and surface the evidence. Hybrid dense-and-BM25 retrieval fused with Reciprocal Rank Fusion; every non-obvious decision logged as an ADR. Private repo — Siemens data confidentiality.",
+    text: "Ronit's MSc dissertation with Siemens Digital Industries: given a failed drive-unit test, find the likely fault and surface the evidence. Hybrid dense-and-BM25 retrieval fused with Reciprocal Rank Fusion; every non-obvious decision logged as an ADR. Private repo, Siemens data confidentiality.",
     actions: [{ kind: "scroll", label: "See the project", target: "work" }],
   },
   astroverse: {
@@ -109,13 +109,13 @@ const NODES: Record<string, Node> = {
   lkq: {
     label: "The $1.2M story",
     keywords: ["lkq", "inventory", "power bi", "dashboard", "commercial", "euro car", "analyst"],
-    text: "Two years of commercial analytics at LKQ (US, Canada, EU). Ronit joined operational and commercial data nobody had linked and surfaced $1.2M of underperforming inventory — plus enriched 1M+ SKUs and cut data errors 60% with automated validation.",
+    text: "Two years of commercial analytics at LKQ (US, Canada, EU). Ronit joined operational and commercial data nobody had linked and surfaced $1.2M of underperforming inventory, plus enriched 1M+ SKUs and cut data errors 60% with automated validation.",
     actions: [{ kind: "scroll", label: "See the case study", target: "work" }],
   },
   eligibility: {
     label: "UK work eligibility?",
     keywords: ["visa", "eligib", "sponsor", "right to work", "work right", "authoris", "authoriz"],
-    text: "Yes — Ronit has UK work rights through the Graduate Route to January 2029. No sponsorship needed in that window.",
+    text: "Yes. Ronit has UK work rights through the Graduate Route to January 2029. No sponsorship needed in that window.",
     chips: ["availability"],
   },
   availability: {
@@ -127,13 +127,13 @@ const NODES: Record<string, Node> = {
   cv: {
     label: "Download CV",
     keywords: ["cv", "resume", "résumé", "download"],
-    text: "Here's Ronit's CV — two pages, AI-analyst focused.",
+    text: "Here's Ronit's CV, two pages, AI-analyst focused.",
     actions: [{ kind: "download", label: "Download CV ↓", href: profile.cv }],
   },
   chat: {
     label: "Book a chat",
     keywords: ["chat", "call", "meet", "talk", "book", "calendly", "speak", "interview"],
-    text: "Happy to set that up — Ronit replies to every message and offers a 20-minute intro call.",
+    text: "Happy to set that up. Ronit replies to every message and offers a 20-minute intro call.",
     actions: [
       { kind: "link", label: "Book 20 min ↗", href: profile.calendly },
       { kind: "scroll", label: "Or send a message", target: "contact" },
@@ -142,19 +142,19 @@ const NODES: Record<string, Node> = {
   overlap: {
     label: "See the overlap",
     keywords: ["overlap", "venn", "who", "about", "background", "story"],
-    text: "Ronit sits at the overlap of Data & Analytics, AI Engineering, and Product & Commercial — that's the AI-analyst edge: he proves the problem is real before building the AI for it.",
+    text: "Ronit sits at the overlap of Data & Analytics, AI Engineering, and Product & Commercial. That's the AI-analyst edge: he proves the problem is real before building the AI for it.",
     actions: [{ kind: "scroll", label: "See the diagram", target: "overlap" }],
   },
   work: {
     label: "See all work",
     keywords: ["work", "project", "portfolio", "case study", "case studies"],
-    text: "Three case studies — LKQ, Siemens RAG, and ORAII — following one arc: data, models, products. Plus a model bench of classical ML projects, and Astroverse live in production.",
+    text: "Three case studies (LKQ, Siemens RAG, and ORAII) following one arc: data, models, products. Plus a model bench of classical ML projects, and Astroverse live in production.",
     actions: [{ kind: "scroll", label: "Open the work", target: "work" }],
   },
 };
 
 const GREETING =
-  "Hi — I'm Ronit's portfolio guide. Ask me anything, or pick a starting point:";
+  "Hi, I'm Ronit's portfolio guide. Ask me anything, or pick a starting point:";
 const START_CHIPS = ["roles", "proof", "models", "eligibility", "chat"];
 const FALLBACK =
   "I can point you to the right place. Try one of these, or ask about his projects, the numbers, or UK eligibility:";

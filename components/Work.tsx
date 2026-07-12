@@ -195,8 +195,8 @@ export function Work() {
             <p className="flex-1 text-[15px] text-[color:var(--ink-muted)] leading-relaxed">
               <span className="font-display text-[17px] text-[color:var(--ink)]">
                 Astroverse
-              </span>{" "}
-              — co-founded consumer product. A payment becomes a typeset,
+              </span>
+              , a co-founded consumer product. A payment becomes a typeset,
               bilingual PDF in minutes with zero manual intervention; I own
               the pipeline, deliverability, CI/CD, and technical SEO.
             </p>

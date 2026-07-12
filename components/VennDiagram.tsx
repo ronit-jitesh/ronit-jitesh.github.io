@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 /**
  * The overlap Venn as three depth-separated discs in CSS 3D.
- * Idle: slow orbit. Drag to spin. Pure CSS transforms — no WebGL, no
+ * Idle: slow orbit. Drag to spin. Pure CSS transforms, no WebGL, no
  * dependencies, nothing for the static export or Lighthouse to pay for.
  * prefers-reduced-motion gets a static tilted render, no animation.
  */
@@ -82,7 +82,7 @@ export function VennDiagram() {
       <div
         ref={stageRef}
         role="img"
-        aria-label="Three overlapping discs — Data and Analytics (validate), AI Engineering (build), Product and Commercial (prove) — meeting at the AI Analyst role. Drag to rotate."
+        aria-label="Three overlapping discs: Data and Analytics (validate), AI Engineering (build), Product and Commercial (prove), meeting at the AI Analyst role. Drag to rotate."
         className="flex items-center justify-center cursor-grab select-none touch-none"
         style={{ perspective: "1000px", height: 380 }}
       >
@@ -96,7 +96,7 @@ export function VennDiagram() {
             transform: "rotateX(16deg) rotateY(-12deg)",
           }}
         >
-          {/* Data & Analytics — navy, deepest */}
+          {/* Data & Analytics: navy, deepest */}
           <div
             className="absolute rounded-full"
             style={{
@@ -109,7 +109,7 @@ export function VennDiagram() {
               transform: "translateZ(-44px)",
             }}
           />
-          {/* AI Engineering — gold, middle */}
+          {/* AI Engineering: gold, middle */}
           <div
             className="absolute rounded-full"
             style={{
@@ -122,7 +122,7 @@ export function VennDiagram() {
               transform: "translateZ(0px)",
             }}
           />
-          {/* Product & Commercial — neutral, nearest */}
+          {/* Product & Commercial: neutral, nearest */}
           <div
             className="absolute rounded-full"
             style={{

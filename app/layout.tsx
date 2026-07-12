@@ -16,12 +16,12 @@ const sans = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ronit-jitesh.github.io"),
-  title: "Ronit Jitesh — AI & Data Analyst · ML Builder",
+  title: "Ronit Jitesh: AI & Data Analyst · ML Builder",
   description:
     "AI and data analyst who turns data into models, and models into products: machine learning, statistics, and commercial analytics. MSc Business Analytics, Edinburgh. RAG dissertation with Siemens Digital Industries. Builder of ORAII. Two years of analytics across US, Canada, and EU.",
   authors: [{ name: "Ronit Jitesh" }],
   openGraph: {
-    title: "Ronit Jitesh — AI & Data Analyst · ML Builder",
+    title: "Ronit Jitesh: AI & Data Analyst · ML Builder",
     description:
       "I turn data into models, and models into products people use. Edinburgh, UK.",
     url: "https://ronit-jitesh.github.io",

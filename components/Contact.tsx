@@ -122,7 +122,7 @@ export function Contact() {
                   name="role"
                   placeholder="e.g. AI Analyst, Applied AI Engineer, Data Product Analyst"
                 />
-                <input type="hidden" name="_subject" value="Portfolio enquiry — Ronit Jitesh" />
+                <input type="hidden" name="_subject" value="Portfolio enquiry from Ronit Jitesh" />
                 <div>
                   <label className="kicker mb-2 block">Message</label>
                   <textarea
