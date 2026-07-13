@@ -161,13 +161,21 @@ const FALLBACK =
 
 type Msg = { from: "bot" | "user"; text: string; chips?: string[]; actions?: Action[] };
 
+function escapeRegExp(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 function route(query: string): Node | null {
   const q = query.toLowerCase();
   // Check every node; longer keyword matches win so "clinical" beats "ai".
+  // Word-boundary matched, not raw substring: a plain `includes` check lets
+  // short keywords like "ai" or "rent" fire inside unrelated words ("email",
+  // "current"), which would route to a confidently wrong canned answer.
   let best: { node: Node; len: number } | null = null;
   for (const node of Object.values(NODES)) {
     for (const kw of node.keywords) {
-      if (q.includes(kw) && (!best || kw.length > best.len)) {
+      const pattern = new RegExp(`\\b${escapeRegExp(kw)}\\b`, "i");
+      if (pattern.test(q) && (!best || kw.length > best.len)) {
         best = { node, len: kw.length };
       }
     }
