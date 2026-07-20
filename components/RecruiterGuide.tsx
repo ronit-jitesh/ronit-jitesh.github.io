@@ -16,13 +16,13 @@ const stops = [
   {
     num: "02",
     label: "See the work",
-    sub: "Three case studies + the model bench",
+    sub: "TrueDigs (live), LKQ, Siemens + the model bench",
     href: "#work",
   },
   {
     num: "03",
     label: "See the impact",
-    sub: "$1.2M, 90%+ classifier accuracy, 60% fewer errors",
+    sub: "$1.2M, a £2/month-accurate fare engine, 90%+ classifier",
     href: "#proof",
   },
   {
