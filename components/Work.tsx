@@ -1,4 +1,4 @@
-import { caseStudies, workOrder } from "@/lib/content";
+import { alsoInProduction, caseStudies, workOrder } from "@/lib/content";
 import { Reveal } from "./Reveal";
 import { TiltCard } from "./TiltCard";
 
@@ -60,7 +60,9 @@ export function Work() {
                         <MediaMock id={c.id} />
                         <div className="absolute top-4 left-4 flex items-center gap-2">
                           <span className="pill bg-[color:var(--bg)]">
-                            {c.id === "oraii"
+                            {c.id === "truedigs"
+                              ? "TrueDigs"
+                              : c.id === "oraii"
                               ? "ORAII"
                               : c.id === "siemens"
                               ? "Siemens"
@@ -184,42 +186,39 @@ export function Work() {
           })}
         </div>
 
-        {/* Building advantage, kept slim: Astroverse stays visible without
-            diluting the data/ML focus of the featured list. */}
-        <Reveal delay={80}>
-          <div className="mt-20 md:mt-24 surface p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
-            <div className="shrink-0 flex items-center gap-3">
-              {statusBadge("live")}
-              <span className="kicker">Also in production</span>
-            </div>
-            <p className="flex-1 text-[15px] text-[color:var(--ink-muted)] leading-relaxed">
-              <span className="font-display text-[17px] text-[color:var(--ink)]">
-                Astroverse
-              </span>
-              , a co-founded consumer product. A payment becomes a typeset,
-              bilingual PDF in minutes with zero manual intervention; I own
-              the pipeline, deliverability, CI/CD, and technical SEO.
-            </p>
-            <div className="shrink-0 flex flex-wrap gap-x-5 gap-y-2">
-              <a
-                href="https://theastroverse.in"
-                target="_blank"
-                rel="noreferrer"
-                className="text-xs font-mono uppercase tracking-[0.12em] text-[color:var(--ink-soft)] hover:text-[color:var(--accent)] transition-colors"
-              >
-                Live product ↗
-              </a>
-              <a
-                href="https://github.com/astro-verse-2709/astroverse"
-                target="_blank"
-                rel="noreferrer"
-                className="text-xs font-mono uppercase tracking-[0.12em] text-[color:var(--ink-soft)] hover:text-[color:var(--accent)] transition-colors"
-              >
-                Code ↗
-              </a>
-            </div>
-          </div>
-        </Reveal>
+        {/* Building advantage, kept slim: ORAII and Astroverse stay visible as
+            strips without diluting the data/ML focus of the featured three. */}
+        <div className="mt-20 md:mt-24 space-y-4">
+          {alsoInProduction.map((p, i) => (
+            <Reveal key={p.name} delay={80 + i * 60}>
+              <div className="surface p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
+                <div className="shrink-0 flex items-center gap-3">
+                  {statusBadge("live")}
+                  <span className="kicker">Also in production</span>
+                </div>
+                <p className="flex-1 text-[15px] text-[color:var(--ink-muted)] leading-relaxed">
+                  <span className="font-display text-[17px] text-[color:var(--ink)]">
+                    {p.name}
+                  </span>
+                  , {p.blurb}
+                </p>
+                <div className="shrink-0 flex flex-wrap gap-x-5 gap-y-2">
+                  {p.links.map((l) => (
+                    <a
+                      key={l.href}
+                      href={l.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-xs font-mono uppercase tracking-[0.12em] text-[color:var(--ink-soft)] hover:text-[color:var(--accent)] transition-colors"
+                    >
+                      {l.label} ↗
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -238,6 +237,46 @@ function Field({ label, value }: { label: string; value: string }) {
 
 /** Stylised placeholder media per project */
 function MediaMock({ id }: { id: string }) {
+  if (id === "truedigs") {
+    return (
+      <div className="absolute inset-0 bg-gradient-to-br from-[#eaf0ec] via-[#e3ebe5] to-[#d0ddd3]">
+        <div className="absolute inset-6 bg-[color:var(--bg)] rounded-2xl shadow-inner border border-[color:var(--border)] p-4 flex flex-col">
+          <div className="flex items-center justify-between">
+            <div className="kicker">Flat · E8 · 1 bed</div>
+            <span className="pill bg-[color:var(--bg-elev)] text-green-700">
+              Fair rent
+            </span>
+          </div>
+          <div className="mt-2 font-display text-2xl leading-tight">
+            £1,750{" "}
+            <span className="text-[color:var(--ink-soft)] text-base">
+              listed
+            </span>
+          </div>
+          <div className="mt-3 space-y-1.5 font-mono text-[11px]">
+            {[
+              ["Rent", "£1,750"],
+              ["TfL fares", "+£186"],
+              ["Council tax", "+£142"],
+              ["Energy (EPC)", "+£95"],
+              ["Water + broadband", "+£64"],
+            ].map(([k, v]) => (
+              <div key={k} className="flex items-center justify-between">
+                <span className="text-[color:var(--ink-muted)]">{k}</span>
+                <span className="text-[color:var(--ink)]">{v}</span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-auto pt-3 border-t border-[color:var(--border)] flex items-center justify-between">
+            <span className="kicker">True monthly cost</span>
+            <span className="font-display text-xl text-[color:var(--accent)]">
+              £2,237
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+  }
   if (id === "oraii") {
     return (
       <div className="absolute inset-0 bg-gradient-to-br from-[#f3ece1] via-[#e9dfcd] to-[#d7c9b0]">

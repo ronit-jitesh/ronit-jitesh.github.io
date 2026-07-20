@@ -37,7 +37,7 @@ const NODES: Record<string, Node> = {
   proof: {
     label: "Strongest proof?",
     keywords: ["proof", "number", "metric", "impact", "result", "achieve", "1.2", "money"],
-    text: "The headline numbers: $1.2M of underperforming inventory surfaced at LKQ, 90%+ accuracy from a BERT + GPT-4o hybrid classifier (group coursework), and 4 AI/data products built end-to-end, one live in production (Astroverse).",
+    text: "The headline numbers: $1.2M of underperforming inventory surfaced at LKQ, a TrueDigs fare engine accurate to within £2 a month of TfL's own fare finder (20 golden journeys, CI-gated), and 4 AI and data products built end-to-end, two live in production (TrueDigs, Astroverse).",
     chips: ["lkq", "models", "work"],
     actions: [{ kind: "scroll", label: "See the numbers", target: "proof" }],
   },
@@ -79,10 +79,15 @@ const NODES: Record<string, Node> = {
     actions: [{ kind: "scroll", label: "See the model bench", target: "models" }],
   },
   rent: {
-    label: "Rent-value engine",
-    keywords: ["rent", "london", "valuation", "quantile", "conformal", "housing", "property"],
-    text: "In development: a London rent-valuation engine. ONS percentile distributions as ground truth, quantile models with conformally calibrated intervals, leave-borough-out spatial cross-validation, and deliberately no LLM in the valuation path.",
+    label: "TrueDigs (flagship)",
+    keywords: ["rent", "london", "valuation", "quantile", "conformal", "housing", "property", "truedigs", "digs", "flagship"],
+    text: "TrueDigs is Ronit's flagship, live at truedigs.vercel.app: it computes the true monthly cost of a London flat (rent plus TfL fares plus council tax plus energy plus bills) and gives a fair-rent verdict. A LightGBM quantile model with conformal intervals, validated by leave-borough-out spatial CV; the fare engine matches TfL's own fare finder to within £2 a month across 20 golden journeys, CI-gated. No LLM in the valuation path, and the model card is candid about the raw 53.5% coverage before conformal correction.",
     chips: ["models", "work"],
+    actions: [
+      { kind: "link", label: "Live product ↗", href: "https://truedigs.vercel.app" },
+      { kind: "link", label: "Code + model card ↗", href: "https://github.com/ronit-jitesh/truedigs" },
+      { kind: "scroll", label: "See the case study", target: "work" },
+    ],
   },
   oraii: {
     label: "What's ORAII?",
@@ -148,34 +153,26 @@ const NODES: Record<string, Node> = {
   work: {
     label: "See all work",
     keywords: ["work", "project", "portfolio", "case study", "case studies"],
-    text: "Three case studies (LKQ, Siemens RAG, and ORAII) following one arc: data, models, products. Plus a model bench of classical ML projects, and Astroverse live in production.",
+    text: "Three case studies led by TrueDigs (a live London rent-cost ML product), then LKQ (commercial impact) and the Siemens dissertation. Plus a model bench of classical ML, with ORAII and Astroverse live in production.",
     actions: [{ kind: "scroll", label: "Open the work", target: "work" }],
   },
 };
 
 const GREETING =
   "Hi, I'm Ronit's portfolio guide. Ask me anything, or pick a starting point:";
-const START_CHIPS = ["roles", "proof", "models", "eligibility", "chat"];
+const START_CHIPS = ["roles", "rent", "proof", "models", "chat"];
 const FALLBACK =
   "I can point you to the right place. Try one of these, or ask about his projects, the numbers, or UK eligibility:";
 
 type Msg = { from: "bot" | "user"; text: string; chips?: string[]; actions?: Action[] };
 
-function escapeRegExp(s: string): string {
-  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
 function route(query: string): Node | null {
   const q = query.toLowerCase();
   // Check every node; longer keyword matches win so "clinical" beats "ai".
-  // Word-boundary matched, not raw substring: a plain `includes` check lets
-  // short keywords like "ai" or "rent" fire inside unrelated words ("email",
-  // "current"), which would route to a confidently wrong canned answer.
   let best: { node: Node; len: number } | null = null;
   for (const node of Object.values(NODES)) {
     for (const kw of node.keywords) {
-      const pattern = new RegExp(`\\b${escapeRegExp(kw)}\\b`, "i");
-      if (pattern.test(q) && (!best || kw.length > best.len)) {
+      if (q.includes(kw) && (!best || kw.length > best.len)) {
         best = { node, len: kw.length };
       }
     }

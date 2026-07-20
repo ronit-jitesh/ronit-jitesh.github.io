@@ -8,7 +8,7 @@ export type Metric = { value: string; label: string };
  */
 export const hero: { display: string; sub: string } = {
   display: "I turn data into models, and models into products people use.",
-  sub: "AI and data analyst: MSc Business Analytics at Edinburgh (predictive and prescriptive modelling, simulation, data envelopment analysis), on top of two years of commercial analytics at LKQ across US, Canada, and EU markets. And the models ship: a hybrid-retrieval fault-ID system with Siemens Digital Industries, GPT-4o clinical documentation in ORAII, and a calibrated London rent-valuation engine in development.",
+  sub: "AI and data analyst: MSc Business Analytics at Edinburgh (predictive and prescriptive modelling, simulation, data envelopment analysis), on top of two years of commercial analytics at LKQ across US, Canada, and EU markets. And the models ship: TrueDigs, a live London rent-valuation engine with conformally calibrated intervals; a hybrid-retrieval fault-ID system with Siemens Digital Industries; and GPT-4o clinical documentation in ORAII.",
 };
 
 export const metrics: [Metric, Metric, Metric] = [
@@ -18,14 +18,14 @@ export const metrics: [Metric, Metric, Metric] = [
       "in underperforming inventory surfaced at LKQ, by joining data nobody had linked",
   },
   {
-    value: "90%+",
+    value: "£2/mo",
     label:
-      "accuracy from a BERT + GPT-4o hybrid NLI classifier with confidence-based routing (group coursework, MSc)",
+      "how close the TrueDigs fare engine runs to TfL's own fare finder, across 20 golden journeys, enforced as a CI gate",
   },
   {
     value: "4",
     label:
-      "AI and data products built end-to-end, one live in production (Astroverse)",
+      "AI and data products built end-to-end, two live in production (TrueDigs, Astroverse)",
   },
 ];
 
@@ -52,6 +52,44 @@ export type CaseStudy = {
 };
 
 export const caseStudies: Record<string, CaseStudy> = {
+  truedigs: {
+    id: "truedigs",
+    tag: "Flagship · Live Product · London Rent Intelligence",
+    title: "TrueDigs: True Cost of London Rent",
+    oneLine:
+      "Two flats at £1,750 are not the same flat. TrueDigs ranks them on true monthly cost, not rent.",
+    context:
+      "London listings show rent and, at best, commute time. They hide the fare bill, the council tax band, and the energy cost that decide what a flat actually costs each month. Renters compare on rent because rent is the only number the portals surface.",
+    role: "Sole builder. Data pipeline, model, backend, frontend, and deployment, under a written correctness constitution.",
+    approach: [
+      "Trained a LightGBM quantile model (p10 to p90) for the fair-rent verdict on ONS open data, working with 1,047 usable district rows after honestly handling the 43.7% that ONS suppresses for thin counts",
+      "Wrapped the model in conformal prediction for calibrated intervals, and validated with leave-borough-out spatial cross-validation so no district ever scores its own borough",
+      "Built the fare engine on the one rule that separates a toy from a correct model: TfL caps apply to a whole week combined, not per destination, so it simulates the week and takes the cheapest of capped pay-as-you-go or the best Travelcard",
+      "Computed true monthly cost end to end: rent plus fares plus council tax plus EPC-based energy plus water plus broadband, with first-class handling of bills-included lets",
+      "Used SHAP to explain every verdict in plain English, and kept an LLM deliberately out of the valuation path",
+    ],
+    stack: [
+      "Python",
+      "LightGBM",
+      "Conformal Prediction",
+      "SHAP",
+      "FastAPI",
+      "Next.js 16",
+      "Supabase",
+      "Docker",
+    ],
+    outcome:
+      "Live at truedigs.vercel.app. The fare engine matches TfL's own fare finder to within £2 a month across 20 golden journeys, enforced as a CI gate. Verdict intervals reach about 80% coverage under leave-borough-out spatial CV via conformal correction; the raw model was 53.5%, and the write-up is candid about why the correction was needed and where it is self-referential. MAE is £335 on medians spanning £816 to £3,026: honest small-data performance and a transparent renter-side verdict, not a per-property AVM.",
+    proof: [
+      { label: "Live product", href: "https://truedigs.vercel.app" },
+      { label: "Code on GitHub", href: "https://github.com/ronit-jitesh/truedigs" },
+      {
+        label: "Model card, honest metrics",
+        href: "https://github.com/ronit-jitesh/truedigs/blob/main/models/model_card.md",
+      },
+    ],
+    status: "live",
+  },
   oraii: {
     id: "oraii",
     tag: "AI Product · Personal Project · In Development",
@@ -169,12 +207,37 @@ export const caseStudies: Record<string, CaseStudy> = {
 };
 
 /**
- * Order mirrors the hero arc: data (LKQ), models (Siemens), products
- * (ORAII). Astroverse is deliberately out of the featured list: it renders as
- * a slim "also live in production" strip so the building advantage stays
- * visible without diluting the data/ML focus.
+ * Featured work leads with TrueDigs (the full data-to-models-to-product arc in
+ * one live project), then LKQ (commercial impact), then Siemens (retrieval and
+ * evaluation rigour). ORAII and Astroverse render as slim "also in production"
+ * strips so the building advantage stays visible without diluting the data/ML
+ * focus of the featured three.
  */
-export const workOrder: string[] = ["lkq", "siemens", "oraii"];
+export const workOrder: string[] = ["truedigs", "lkq", "siemens"];
+
+export type ProductionStrip = {
+  name: string;
+  blurb: string;
+  links: { label: string; href: string }[];
+};
+
+export const alsoInProduction: ProductionStrip[] = [
+  {
+    name: "Astroverse",
+    blurb:
+      "a co-founded consumer product. A payment becomes a typeset, bilingual PDF in minutes with zero manual intervention; I own the pipeline, deliverability, CI/CD, and technical SEO.",
+    links: [
+      { label: "Live product", href: "https://theastroverse.in" },
+      { label: "Code", href: "https://github.com/astro-verse-2709/astroverse" },
+    ],
+  },
+  {
+    name: "ORAII",
+    blurb:
+      "an AI clinical-documentation platform for therapists. Real-time transcription becomes SOAP, DAP, GIRP, and BIRP notes via GPT-4o, with C-SSRS risk scoring, built for UK-GDPR and India's DPDP Act.",
+    links: [{ label: "Code", href: "https://github.com/ronit-jitesh/Oraii-UK" }],
+  },
+];
 
 export type ModelBenchItem = {
   title: string;
@@ -338,9 +401,9 @@ export const skillGroups = [
   {
     title: "Build: machine learning & AI",
     items: [
-      "scikit-learn",
+      "scikit-learn · LightGBM",
       "XGBoost",
-      "Quantile Regression · Conformal Prediction",
+      "Quantile Regression · Conformal · SHAP",
       "GPT-4o",
       "Llama 3",
       "RAG Pipelines · FAISS",
