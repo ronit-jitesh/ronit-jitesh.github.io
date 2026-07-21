@@ -92,6 +92,24 @@ export function Work() {
                       {c.oneLine}
                     </p>
 
+                    {c.meta && (
+                      <dl className="mt-8 grid grid-cols-2 sm:grid-cols-4 border-t border-[color:var(--border)]">
+                        {c.meta.map((m, mi) => (
+                          <div
+                            key={m.label}
+                            className={`py-4 sm:py-5 sm:px-5 ${
+                              mi === 0 ? "sm:pl-0" : ""
+                            } border-b sm:border-b-0 sm:border-r last:border-r-0 last:border-b-0 border-[color:var(--border)]`}
+                          >
+                            <dt className="kicker">{m.label}</dt>
+                            <dd className="mt-1.5 font-display text-[17px] leading-tight text-[color:var(--ink)]">
+                              {m.value}
+                            </dd>
+                          </div>
+                        ))}
+                      </dl>
+                    )}
+
                     <div className="mt-8 grid sm:grid-cols-2 gap-x-8 gap-y-8">
                       <Field label="Context" value={c.context} />
                       <Field label="My role" value={c.role} />
