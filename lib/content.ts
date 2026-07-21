@@ -79,9 +79,9 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Docker",
     ],
     outcome:
-      "Live at truedigs.vercel.app. The fare engine matches TfL's own fare finder to within £2 a month across 20 golden journeys, enforced as a CI gate. Verdict intervals reach about 80% coverage under leave-borough-out spatial CV via conformal correction; the raw model was 53.5%, and the write-up is candid about why the correction was needed and where it is self-referential. MAE is £335 on medians spanning £816 to £3,026: honest small-data performance and a transparent renter-side verdict, not a per-property AVM.",
+      "Live at truedigs.co.uk. The fare engine matches TfL's own fare finder to within £2 a month across 20 golden journeys, enforced as a CI gate. Verdict intervals reach about 80% coverage under leave-borough-out spatial CV via conformal correction; the raw model was 53.5%, and the write-up is candid about why the correction was needed and where it is self-referential. MAE is £335 on medians spanning £816 to £3,026: honest small-data performance and a transparent renter-side verdict, not a per-property AVM.",
     proof: [
-      { label: "Live product", href: "https://truedigs.vercel.app" },
+      { label: "Live product", href: "https://truedigs.co.uk" },
       { label: "Code on GitHub", href: "https://github.com/ronit-jitesh/truedigs" },
       {
         label: "Model card, honest metrics",
