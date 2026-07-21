@@ -81,10 +81,10 @@ const NODES: Record<string, Node> = {
   rent: {
     label: "TrueDigs (flagship)",
     keywords: ["rent", "london", "valuation", "quantile", "conformal", "housing", "property", "truedigs", "digs", "flagship"],
-    text: "TrueDigs is Ronit's flagship, live at truedigs.vercel.app: it computes the true monthly cost of a London flat (rent plus TfL fares plus council tax plus energy plus bills) and gives a fair-rent verdict. A LightGBM quantile model with conformal intervals, validated by leave-borough-out spatial CV; the fare engine matches TfL's own fare finder to within £2 a month across 20 golden journeys, CI-gated. No LLM in the valuation path, and the model card is candid about the raw 53.5% coverage before conformal correction.",
+    text: "TrueDigs is Ronit's flagship, live at truedigs.co.uk: it computes the true monthly cost of a London flat (rent plus TfL fares plus council tax plus energy plus bills) and gives a fair-rent verdict. A LightGBM quantile model with conformal intervals, validated by leave-borough-out spatial CV; the fare engine matches TfL's own fare finder to within £2 a month across 20 golden journeys, CI-gated. No LLM in the valuation path, and the model card is candid about the raw 53.5% coverage before conformal correction.",
     chips: ["models", "work"],
     actions: [
-      { kind: "link", label: "Live product ↗", href: "https://truedigs.vercel.app" },
+      { kind: "link", label: "Live product ↗", href: "https://truedigs.co.uk" },
       { kind: "link", label: "Code + model card ↗", href: "https://github.com/ronit-jitesh/truedigs" },
       { kind: "scroll", label: "See the case study", target: "work" },
     ],
