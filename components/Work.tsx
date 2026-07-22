@@ -93,11 +93,11 @@ export function Work() {
                     </p>
 
                     {c.meta && (
-                      <dl className="mt-8 grid grid-cols-2 sm:grid-cols-4 border-t border-[color:var(--border)]">
+                      <dl className="mt-8 grid grid-cols-1 sm:grid-cols-4 border-t border-[color:var(--border)]">
                         {c.meta.map((m, mi) => (
                           <div
                             key={m.label}
-                            className={`py-4 sm:py-5 sm:px-5 ${
+                            className={`py-3.5 sm:py-5 sm:px-5 ${
                               mi === 0 ? "sm:pl-0" : ""
                             } border-b sm:border-b-0 sm:border-r last:border-r-0 last:border-b-0 border-[color:var(--border)]`}
                           >
