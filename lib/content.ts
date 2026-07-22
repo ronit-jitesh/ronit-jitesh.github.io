@@ -49,11 +49,19 @@ export type CaseStudy = {
   outcome: string;
   proof: ProofItem[];
   status?: "live" | "in-progress" | "shipped";
+  /** Compact metadata strip shown at the top of the case study. */
+  meta?: { label: string; value: string }[];
 };
 
 export const caseStudies: Record<string, CaseStudy> = {
   truedigs: {
     id: "truedigs",
+    meta: [
+      { label: "Timeline", value: "2026" },
+      { label: "Focus", value: "ML + Product" },
+      { label: "Data", value: "ONS open data" },
+      { label: "Status", value: "Live" },
+    ],
     tag: "Flagship · Live Product · London Rent Intelligence",
     title: "TrueDigs: True Cost of London Rent",
     oneLine:
@@ -125,6 +133,12 @@ export const caseStudies: Record<string, CaseStudy> = {
   },
   lkq: {
     id: "lkq",
+    meta: [
+      { label: "Timeline", value: "2 years" },
+      { label: "Focus", value: "BI + Analytics" },
+      { label: "Scale", value: "1M+ SKUs" },
+      { label: "Status", value: "Shipped" },
+    ],
     tag: "BI · 2 Years Industry · EURO CAR PARTS Group",
     title: "LKQ: Commercial Analytics at Scale",
     oneLine:
@@ -155,6 +169,12 @@ export const caseStudies: Record<string, CaseStudy> = {
   },
   siemens: {
     id: "siemens",
+    meta: [
+      { label: "Timeline", value: "2026" },
+      { label: "Focus", value: "Retrieval + Eval" },
+      { label: "Data", value: "Siemens repair logs" },
+      { label: "Status", value: "Dissertation" },
+    ],
     tag: "Retrieval & Fault ID · MSc Dissertation · Siemens Digital Industries",
     title: "Siemens Repair Companion",
     oneLine:
