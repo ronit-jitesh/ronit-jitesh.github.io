@@ -8,7 +8,7 @@ export type Metric = { value: string; label: string };
  */
 export const hero: { display: string; sub: string } = {
   display: "I turn data into models, and models into products people use.",
-  sub: "AI and data analyst: MSc Business Analytics at Edinburgh (predictive and prescriptive modelling, simulation, data envelopment analysis), on top of two years of commercial analytics at LKQ across US, Canada, and EU markets. And the models ship: TrueDigs, a live London rent-valuation engine with conformally calibrated intervals; a hybrid-retrieval fault-ID system with Siemens Digital Industries; and GPT-4o clinical documentation in ORAII.",
+  sub: "AI and data analyst: MSc Business Analytics at Edinburgh (predictive and prescriptive modelling, simulation, data envelopment analysis), on top of two years of commercial analytics at LKQ across US, Canada, and EU markets. And the models ship: TrueDigs, a live London rent-valuation engine with conformally calibrated intervals; a fault-identification and cost-modelling system with Siemens Digital Industries; and GPT-4o clinical documentation in ORAII.",
 };
 
 export const metrics: [Metric, Metric, Metric] = [
@@ -170,27 +170,28 @@ export const caseStudies: Record<string, CaseStudy> = {
   siemens: {
     id: "siemens",
     meta: [
-      { label: "Timeline", value: "2026" },
-      { label: "Focus", value: "Retrieval + Eval" },
-      { label: "Data", value: "Siemens repair logs" },
+      { label: "Timeline", value: "2025-26" },
+      { label: "Focus", value: "Fault ID + Cost Model" },
+      { label: "Data", value: "195k test records" },
       { label: "Status", value: "Dissertation" },
     ],
-    tag: "Retrieval & Fault ID · MSc Dissertation · Siemens Digital Industries",
-    title: "Siemens Repair Companion",
+    tag: "Fault ID + Cost Framework · MSc Dissertation · Siemens Digital Industries",
+    title: "Siemens: Fault Identification for SINAMICS Drives",
     oneLine:
-      "Given a failed drive-unit test, find the likely fault and show the evidence.",
+      "A third of repairs were false alarms, concentrated in 10 of 22 test stations.",
     context:
-      "When a Siemens drive unit fails its functional test, engineers need to identify the likely cause, process, component, or tester, and back that judgement with evidence from historical repair records. No single source settles the question on its own.",
-    role: "Sole builder. Academic partner: Siemens Digital Industries.",
+      "Siemens SINAMICS drive units generate thousands of automated test failures a year, but not every failure is a real fault. Engineers needed a way to separate genuine faults from false alarms and route each case to the right next step, backed by evidence instead of a guess.",
+    role: "Sole builder. Client-sponsored MSc dissertation with Siemens Digital Industries.",
     approach: [
-      "Built and independently audited a clean, matched test-to-repair dataset before any modelling began",
-      "Validated a 3-class fault taxonomy against the domain, then built the retrieval corpus from repair records",
-      "Built a hybrid retrieval core, dense embeddings plus BM25, fused with Reciprocal Rank Fusion, benchmarked against a reranker and kept the simpler pipeline once it won on the evaluation set",
-      "Logged every non-obvious decision as an ADR: taxonomy, evaluation split, retrieval architecture, so the dissertation is defensible, not just narrated",
+      "Linked 195,000 automated test-failure records to 11,000 repair records through a temporal serial-number join, producing a leakage-controlled dataset of 7,189 labelled repairs across a fault taxonomy collapsed from 62 codes to 3",
+      "Built a hybrid retrieval and machine-learning pipeline: dense and sparse retrieval fused by rank, a class-weighted Random Forest classifier, and conformal-prediction abstention that flags low-confidence cases for a human to review rather than forcing a guess",
+      "Found the headline insight in the data itself: about a third of all repairs were false alarms, concentrated in 10 of the 22 test stations, reframing a diagnosis problem into a targeted-maintenance one",
+      "Designed a break-even cost framework that turns model confidence into an automate-or-escalate decision, so the client can set the threshold from their own cost of getting a call wrong",
+      "Delivered it as a fully local, NDA-compliant application with grounded explanations and a reproducible one-command evaluation, and demonstrated it to the client",
     ],
-    stack: ["Python", "Dense Retrieval (MiniLM)", "BM25", "Reciprocal Rank Fusion", "Evaluation Design"],
+    stack: ["Python", "scikit-learn", "Hybrid Retrieval", "Random Forest", "Conformal Prediction", "Streamlit"],
     outcome:
-      "Retrieval core complete and evaluated; the fault-identification engine is next. Dissertation submission Aug 2026, with full results published on completion.",
+      "Macro-F1 more than doubled over baseline (0.52 versus 0.23), with conformal abstention flagging uncertain cases instead of forcing a call. The false-alarm pattern points to an estimated £0.7 to 1.1M a year in avoidable rework, a scenario estimate built on published industry per-repair cost benchmarks, not a Siemens-confirmed figure. Demonstrated to the client and green-lit for further development, ahead of any production rollout.",
     proof: [
       { label: "Private repo, Siemens data confidentiality" },
       { label: "Companion POC: SOP migration", href: "https://github.com/ronit-jitesh/Document-Migration" },
@@ -383,7 +384,7 @@ export const education = [
     detail:
       "Predictive & Prescriptive Analytics · Simulation Modelling · Data Envelopment Analysis · Mathematical & Stochastic Programming",
     extras: [
-      "Dissertation: Siemens Repair Companion (hybrid retrieval + fault identification), Siemens Digital Industries",
+      "Dissertation: Fault Identification for Siemens SINAMICS Drives (hybrid retrieval, Random Forest, conformal prediction), Siemens Digital Industries",
       "Social Representative, Edinburgh Business School",
       "Most Viable Business, Edinburgh Startup Fast Track 2025, awarded to AfterWard (team project that inspired ORAII)",
     ],
@@ -422,7 +423,7 @@ export const skillGroups = [
     title: "Build: machine learning & AI",
     items: [
       "scikit-learn · LightGBM",
-      "XGBoost",
+      "XGBoost · Random Forest",
       "Quantile Regression · Conformal · SHAP",
       "GPT-4o",
       "Llama 3",
@@ -439,6 +440,7 @@ export const skillGroups = [
       "Model Evaluation (ROC-AUC · Precision/Recall)",
       "Automated Validation",
       "Data Storytelling",
+      "Cost-Benefit Analysis",
       "Executive Reporting",
       "KPI Frameworks",
       "Deployment & CI/CD",
@@ -472,7 +474,7 @@ export const operatingModel: OperatingPillar[] = [
     action: "Build",
     discipline: "AI Engineering",
     subtitle: "Ship the AI, not slideware.",
-    body: "GPT-4o clinical notes for ORAII, hybrid dense-and-BM25 retrieval for Siemens, an automated LLM-to-PDF pipeline for Astroverse. I prompt-engineer and ship to production, across transcription, generation, billing, and delivery, not just prototypes.",
+    body: "GPT-4o clinical notes for ORAII, hybrid retrieval and a Random Forest fault classifier for Siemens, an automated LLM-to-PDF pipeline for Astroverse. I prompt-engineer and ship to production, across transcription, generation, billing, and delivery, not just prototypes.",
   },
   {
     num: "03",

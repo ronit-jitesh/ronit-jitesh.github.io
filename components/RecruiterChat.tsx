@@ -44,7 +44,7 @@ const NODES: Record<string, Node> = {
   ai: {
     label: "Show the AI builds",
     keywords: ["ai", "llm", "gpt", "prompt", "build"],
-    text: "Three AI builds: ORAII (GPT-4o clinical documentation), a Siemens hybrid-retrieval fault-ID system, and Astroverse (a live, automated LLM-to-PDF pipeline). Plus a model bench of classical ML work.",
+    text: "Three AI builds: ORAII (GPT-4o clinical documentation), a Siemens fault-identification and cost-modelling system, and Astroverse (a live, automated LLM-to-PDF pipeline). Plus a model bench of classical ML work.",
     chips: ["oraii", "siemens", "models"],
     actions: [{ kind: "scroll", label: "Open the case studies", target: "work" }],
   },
@@ -102,7 +102,7 @@ const NODES: Record<string, Node> = {
   siemens: {
     label: "The Siemens work",
     keywords: ["siemens", "rag", "retrieval", "dissertation", "repair", "industrial", "faiss", "llama", "fault"],
-    text: "Ronit's MSc dissertation with Siemens Digital Industries: given a failed drive-unit test, find the likely fault and surface the evidence. Hybrid dense-and-BM25 retrieval fused with Reciprocal Rank Fusion; every non-obvious decision logged as an ADR. Private repo, Siemens data confidentiality.",
+    text: "Ronit's MSc dissertation with Siemens Digital Industries: a fault-identification system for SINAMICS drive units. A hybrid retrieval and Random Forest pipeline with conformal abstention roughly doubled macro-F1 over baseline (0.52 vs 0.23). The standout finding: about a third of repairs were false alarms concentrated in 10 of 22 test stations, an estimated £0.7 to 1.1M a year in avoidable rework (an industry-benchmark estimate, not a Siemens-confirmed figure). Demonstrated to the client and green-lit for further work. Private repo, Siemens data confidentiality.",
     actions: [{ kind: "scroll", label: "See the project", target: "work" }],
   },
   astroverse: {
@@ -153,7 +153,7 @@ const NODES: Record<string, Node> = {
   work: {
     label: "See all work",
     keywords: ["work", "project", "portfolio", "case study", "case studies"],
-    text: "Three case studies led by TrueDigs (a live London rent-cost ML product), then LKQ (commercial impact) and the Siemens dissertation. Plus a model bench of classical ML, with ORAII and Astroverse live in production.",
+    text: "Three case studies led by TrueDigs (a live London rent-cost ML product), then LKQ (commercial impact) and the Siemens fault-identification dissertation. Plus a model bench of classical ML, with ORAII and Astroverse live in production.",
     actions: [{ kind: "scroll", label: "Open the work", target: "work" }],
   },
 };
